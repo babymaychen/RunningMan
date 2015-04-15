@@ -13,9 +13,22 @@ var GameModeLayer = cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(touch, event){
+				var target = event.getCurrentTarget();
+				var locationInNode = target.convertToNodeSpace(touch.getLocation());
+
+				var s = target.getContentSize();
+				var rect = cc.rect(0, 0, s.width, s.height);
+				console.log(locationInNode);
+				console.log(target);
+				if (cc.rectContainsPoint(rect, locationInNode)) {
+					//cc.log("sprite began... x = " + locationInNode.x + ", y = " + locationInNode.y);
+					target.opacity = 180;
+				}
+				return true;
+			}
 		}, this.draw);
-		this.board = new cc.Sprite(res.mode.board);
+		this.board = new cc.Sprite(res.mode_board);
 		this.board.setPosition(cc.p(winsize.width/2, winsize.height));
 		this.addChild(this.board,10);
 		
@@ -23,8 +36,8 @@ var GameModeLayer = cc.Layer.extend({
 		this.board.runAction(actionTo);
 		
 		this.modeone = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.mode.mode1),
-				new cc.Sprite(res.mode.mode1),
+				new cc.Sprite(res.mode_mode1),
+				new cc.Sprite(res.mode_mode1),
 				this.relaxMode, this));
 		this.modeone.setPosition(cc.p(winsize.width/2-120, winsize.height+30));
 		this.addChild(this.modeone, 11);
@@ -33,8 +46,8 @@ var GameModeLayer = cc.Layer.extend({
 		this.modeone.runAction(actionTo);
 		
 		this.modetwo = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.mode.mode2),
-				new cc.Sprite(res.mode.mode2),
+				new cc.Sprite(res.mode_mode2),
+				new cc.Sprite(res.mode_mode2),
 				this.relayMode, this));
 		this.modetwo.setPosition(cc.p(winsize.width/2+120, winsize.height+30));
 		this.addChild(this.modetwo, 11);

@@ -18,7 +18,7 @@ var Spring = cc.Class.extend({
 		this.x = posX;
 		this.y = posY;
 
-		this.spriteSheet = new cc.SpriteBatchNode(res.spring.png);
+		this.spriteSheet = new cc.SpriteBatchNode(res.spring_png);
 
 		this.springAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3].map(function (i) {

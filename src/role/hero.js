@@ -39,13 +39,13 @@ var Hero = cc.Class.extend({
 	ctor: function (x, y) {
 		this.x = x;
 		this.y = y;
-		// cc.spriteFrameCache.addSpriteFrames(res.panda.plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.panda.png);
 
-		this.runningAction = new cc.RepeatForever(new cc.Animate(
-				new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
-					return cc.spriteFrameCache.getSpriteFrame("panda_run_0" + i + ".png");
-				}), 0.05)
+		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
+
+		this.runningAction = new cc.RepeatForever( new cc.Animate(new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
+			return cc.spriteFrameCache.getSpriteFrame("panda_run_0" + i + ".png");
+		}), 0.05)
 		));
 		this.runningAction.retain();
 
@@ -63,8 +63,9 @@ var Hero = cc.Class.extend({
 		));
 		this.jumpDownAction.retain();
 
-		this.sprite = new cc.PhysicsSprite("#panda_run_01.png");
-		this.spriteSheet.addChild(this.sprite);
+		this.sprite = new cc.PhysicsSprite('#panda_run_01.png');
+		this.sprite.runAction(this.runningAction);
+
 
 		var contentSize = this.sprite.getContentSize();
 
@@ -81,8 +82,8 @@ var Hero = cc.Class.extend({
 		this.shape.setCollisionType(SpriteTag.player);
 		this.shape.setElasticity(1);
 
-		this.sprite.runAction(this.runningAction);
 		this.status = "running";
+		this.spriteSheet.addChild(this.sprite);
 		this.sprite.retain();
 		this.spriteSheet.retain();
 	},
@@ -104,7 +105,7 @@ var Hero = cc.Class.extend({
 		space.addShape(this.shape);
 
 		// jump effect init
-// this.stars = cc.ParticleSystem(res.particle.stars);
+// this.stars = cc.ParticleSystem(res.particle_stars);
 // this.stars.setPosition(100, 100);
 // this.layer.addChild(this.stars,3);
 
@@ -149,7 +150,7 @@ var Hero = cc.Class.extend({
 				if (vel.y == 0) {
 					this.status = 'running';
 					this.sprite.stopAllActions();
-					this.sprite.runAction(this.runningAction);
+					//this.sprite.runAction(this.runningAction);
 				}
 			} else if (vel.y < 0.1) {
 				this.status = this.status.slice(0, 7) + 'down';
@@ -272,4 +273,4 @@ var Hero = cc.Class.extend({
 		this.gotRedshoes = true;
 		this.gotShoes = false;
 	}
-}) 
+});

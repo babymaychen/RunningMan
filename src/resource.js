@@ -1,170 +1,137 @@
 var res = {
 
 	//opening
-	open: {
-		bg: 'res/open-bg.png',
-		team: 'res/maxon-team.png'
-	},
-		///////////////////
-	mode: {
-		board: 'res/mode-board.png',
-		mode1: 'res/mode1.png',
-		mode2: 'res/mode2.png'
-	},
 
-	info: {
-		board: 'res/info-board.png',
-		done: 'res/done.png'
-	},
+		open_bg: 'res/open-bg.png',
+		open_team: 'res/maxon-team.png',
 
-	rank: {
-		board: 'res/rank-board.png'
-	},
+		mode_board: 'res/mode-board.png',
+		mode_mode1: 'res/mode1.png',
+		mode_mode2: 'res/mode2.png',
+
+		info_board: 'res/info-board.png',
+		info_done: 'res/done.png',
+
+		rank_board: 'res/rank-board.png',
 
 	//////////////////
 	//menu
-	menu: {
-		bg: 'res/menu-bg.png',
-		playBtn: 'res/play-btn.png',
-		playBtnS: 'res/play-btn-s.png',
+		menu_bg: 'res/menu-bg.png',
+		menu_playBtn: 'res/play-btn.png',
+		menu_playBtnS: 'res/play-btn-s.png',
 		//storeBtn: 'res/store-btn.png',
 		//storeBtnS: 'res/store-btn-s.png',
-		storeBtn: 'res/rank-btn.png',
-		storeBtnS: 'res/rank-btn.png',
-		setBtn: 'res/set-btn.png',
-		setBtnS: 'res/set-btn-s.png',
-		startBtn: 'res/start-btn-normal.png',
-		startBtnS: 'res/start-btn-selected.png',
-		aboutBtn: 'res/about-btn.png',
-		aboutBtnS: 'res/about-btn-s.png',
-		logo: 'res/game-logo.png',
-		wait: 'res/wait.png',
-		enable: 'res/enable.png',
-		disable: 'res/disable.png'
-	},
+		menu_storeBtn: 'res/rank-btn.png',
+		menu_storeBtnS: 'res/rank-btn.png',
+		menu_setBtn: 'res/set-btn.png',
+		menu_setBtnS: 'res/set-btn-s.png',
+		menu_startBtn: 'res/start-btn-normal.png',
+		menu_startBtnS: 'res/start-btn-selected.png',
+		menu_aboutBtn: 'res/about-btn.png',
+		menu_aboutBtnS: 'res/about-btn-s.png',
+		menu_logo: 'res/game-logo.png',
+		menu_wait: 'res/wait.png',
+		menu_enable: 'res/enable.png',
+		menu_disable: 'res/disable.png',
 
-	panda : {
-		plist: 'res/panda.plist',
-		png: 'res/panda.png'
-	},
+        //panda
+		panda_plist: 'res/panda.plist',
+		panda_png: 'res/panda.png',
 
 	// Platform Related.
-	platform: {
-		plist: 'res/platform.plist',
-		png: 'res/platform.png'
-	},
+		platform_plist: 'res/platform.plist',
+		platform_png: 'res/platform.png',
 
 	// Background
-	background: {
-		one : 'res/far-bg.png',
-		two : 'res/near-bg.png'
-	},
+		background_one : 'res/far-bg.png',
+		background_two : 'res/near-bg.png',
 	// gold
-	gold: {
-		plist: 'res/gold.plist',
-		png: 'res/gold.png'
-	}, 
-	
+		gold_plist: 'res/gold.plist',
+		gold_png: 'res/gold.png',
+
 	//enemy
-	enemy: {
-		png: 'res/enemy.png',
-		plist: 'res/enemy.plist'
-	},
+		/*enemy_png: 'res/enemy.png',
+		enemy_plist: 'res/enemy.plist',*/
+
 	
 	//bird
-	bird : {
-		png: 'res/bird.png',
-		plist: 'res/bird.plist'
-	},
-	
+		bird_png: 'res/bird.png',
+		bird_plist: 'res/bird.plist',
+
 	//magnet
-	magnet: {
-		png: 'res/magnet.png',
-		plist: 'res/magnet.plist',
-		effect: 'res/magnetEffect.png'
-	},
-	
+		magnet_png: 'res/magnet.png',
+		magnet_plist: 'res/magnet.plist',
+		magnet_effect: 'res/magnetEffect.png',
+
 	//spring
-	spring: {
-		png: 'res/spring.png',
-		plist: 'res/spring.plist'
-	},
-	
+		spring_png: 'res/spring.png',
+		spring_plist: 'res/spring.plist',
+
 	//shoes
-	shoes: {
-		png: 'res/shoes.png',
-		plist: 'res/shoes.plist'
-	},
-	
+		shoes_png: 'res/shoes.png',
+		shoes_plist: 'res/shoes.plist',
+
 	//red shoes
-	redshoes: {
-		png: 'res/redshoes.png',
-		plist: 'res/redshoes.plist'
-	},
-	
+		redshoes_png: 'res/redshoes.png',
+		redshoes_plist: 'res/redshoes.plist',
+
 	//particle
-	particle: {
-		circle: 'res/circle_particle.plist',
-		stars: 'res/stars_particle.plist'
-	},
-	
+		particle_circle: 'res/circle_particle.plist',
+		particle_stars: 'res/stars_particle.plist',
+
 	//fire
-	fire: {
-		plist: 'res/fire.plist'
-	},
-	
+		fire_plist: 'res/fire.plist',
+
 	//game over res
-	over: {
-		board: 'res/ui/score-board.png',
-		store: 'res/ui/store.png',
-		reload: 'res/ui/reload.png',
-		menu: 'res/ui/menu.png'
-	},
-	          
+		over_board: 'res/ui/score-board.png',
+		over_store: 'res/ui/store.png',
+		over_reload: 'res/ui/reload.png',
+		over_menu: 'res/ui/menu.png',
+
 	// Sound Effect
-	sound:{
-		bg_mp3: 'res/sound/bg.mp3',
-		jump_mp3: 'res/sound/jump.mp3',
-		gold_mp3: 'res/sound/eat_gold.mp3',
-		game_over: 'res/sound/game_over.mp3',
-		button: 'res/sound/button.mp3',
-		menu: 'res/sound/menu.mp3',
-		opening: 'res/sound/opening.mp3',
-		enemyDied: 'res/sound/enemyDied.mp3',
-		magnet: 'res/sound/magnet.mp3',
-		lose_prop: 'res/sound/lose_prop.mp3',
-		spring: 'res/sound/spring.mp3',
-		speedup: 'res/sound/speedup.mp3',
-		alert: 'res/sound/alert.mp3',
-		shopping: 'res/sound/shopping.mp3'
-	},
-	
-	ui: {
-		goldbar: 'res/ui/gold-bar.png',
-		energybar: 'res/ui/energy-bar.png',
-		progress: 'res/ui/progress.png',
-		soundOn: 'res/ui/soundOnBtn.png',
-		soundOff: 'res/ui/soundOffBtn.png',
-		distance: 'res/ui/distance.png',
-		aboutBoard: 'res/ui/about-board.png',
-		backBtn: 'res/ui/back-btn.png',
-		setBoard: 'res/ui/set-board.png',
-		onBtn: 'res/ui/on-btn.png',
-		offBtn: 'res/ui/off-btn.png',
-		highBtn: 'res/ui/high-btn.png',
-		lowBtn: 'res/ui/low-btn.png',
-		storeBoard: 'res/ui/store-board.png',
-		buy30: 'res/ui/buy-30.png',
-		buy50: 'res/ui/buy-50.png',
-		magnetProp: 'res/ui/magnet-prop.png',
-		shoesProp: 'res/ui/shoes-prop.png',
-		redshoesProp: 'res/ui/redshoes-prop.png'
-	},
-    
-    physics: {
-    	groundHeight: -1000
-    }
+		sound_bg_mp3: 'res/sound/bg.mp3',
+		sound_jump_mp3: 'res/sound/jump.mp3',
+		sound_gold_mp3: 'res/sound/eat_gold.mp3',
+		sound_game_over: 'res/sound/game_over.mp3',
+		sound_button: 'res/sound/button.mp3',
+		sound_menu: 'res/sound/menu.mp3',
+		sound_opening: 'res/sound/opening.mp3',
+		sound_enemyDied: 'res/sound/enemyDied.mp3',
+		sound_magnet: 'res/sound/magnet.mp3',
+		sound_lose_prop: 'res/sound/lose_prop.mp3',
+		sound_spring: 'res/sound/spring.mp3',
+		sound_speedup: 'res/sound/speedup.mp3',
+		sound_alert: 'res/sound/alert.mp3',
+		sound_shopping: 'res/sound/shopping.mp3',
+
+		ui_goldbar: 'res/ui/gold-bar.png',
+		ui_energybar: 'res/ui/energy-bar.png',
+		ui_progress: 'res/ui/progress.png',
+		ui_soundOn: 'res/ui/soundOnBtn.png',
+		ui_soundOff: 'res/ui/soundOffBtn.png',
+		ui_distance: 'res/ui/distance.png',
+		ui_aboutBoard: 'res/ui/about-board.png',
+		ui_backBtn: 'res/ui/back-btn.png',
+		ui_setBoard: 'res/ui/set-board.png',
+		ui_onBtn: 'res/ui/on-btn.png',
+		ui_offBtn: 'res/ui/off-btn.png',
+		ui_highBtn: 'res/ui/high-btn.png',
+		ui_lowBtn: 'res/ui/low-btn.png',
+		ui_storeBoard: 'res/ui/store-board.png',
+		ui_buy30: 'res/ui/buy-30.png',
+		ui_buy50: 'res/ui/buy-50.png',
+		ui_magnetProp: 'res/ui/magnet-prop.png',
+		ui_shoesProp: 'res/ui/shoes-prop.png',
+		ui_redshoesProp: 'res/ui/redshoes-prop.png',
+		ui_man: 'res/runner.png',
+
+		physics_groundHeight: -1000
 };
+
+var g_resources = [];
+for (var i in res) {
+    g_resources.push(res[i]);
+}
 
 var SpriteTag = {
 	player : 0,
@@ -178,11 +145,6 @@ var SpriteTag = {
 	redshoes: 8,
 	bird: 9
 };
-
-var g_resources = [];
-for (var i in res) {
-    g_resources.push(res[i]);
-}
 
 //game global variable
 var gameStarted = false;

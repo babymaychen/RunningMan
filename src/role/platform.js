@@ -25,11 +25,11 @@ var Platform = cc.Class.extend({
 	ctor: function (boardX, boardY, length) {
 		this.length = length;
 
-		//cc.spriteFrameCache.addSpriteFrames(res.platform.plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.platform.png);
+		cc.spriteFrameCache.addSpriteFrames(res.platform_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.platform_png);
 		
 		//create platform
-		this.platform = new cc.PhysicsSprite(cc.spriteFrameCache.getSpriteFrame("platform_"+ length +".png"));
+		this.platform = new cc.PhysicsSprite('#platform_'+ length +'.png');
 		this.platform.retain();
 		this.spriteSheet.addChild(this.platform);
 		this.spriteSheet.retain();

@@ -27,7 +27,7 @@ var DoubleJumpShoe = cc.Class.extend({
 		this.x = posX;
 		this.y = posY;
 
-		this.spriteSheet = new cc.SpriteBatchNode(res.shoes.png);
+		this.spriteSheet = new cc.SpriteBatchNode(res.shoes_png);
 		
 		// set the continued time if present.
 		if (continuedTime) {
@@ -41,7 +41,7 @@ var DoubleJumpShoe = cc.Class.extend({
 		));
 		this.rotatingAction.retain();
 
-		this.sprite = new cc.PhysicsSprite("#shoes_00.png");
+		this.sprite = new cc.PhysicsSprite(cc.spriteFrameCache.getSpriteFrame("#shoes_00.png"));
 		this.sprite.setScale(0.4);
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.rotatingAction);
@@ -50,6 +50,8 @@ var DoubleJumpShoe = cc.Class.extend({
 
 		//physics
 		var contentSize = this.sprite.getContentSize();
+		contentSize.width = 100;
+		contentSize.height = 100;
 		var radius = 0.95 * this.sprite.getContentSize().width / 4;
 		var body = new cp.Body(0.1, cp.momentForBox(Number.POSITIVE_INFINITY, contentSize.width, contentSize.height));
 		body.applyForce(cp.v(0, 150), cp.v(0, 0));

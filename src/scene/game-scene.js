@@ -19,9 +19,9 @@ var GameScene = cc.Scene.extend({
 		var wallBottom = new cp.SegmentShape(
 				this.space.staticBody,
 				// Start point
-				cp.v(0, res.physics.groundHeight),
+				cp.v(0, res.physics_groundHeight),
 				// MAX INT:4294967295
-				cp.v(4294967295, res.physics.groundHeight),
+				cp.v(4294967295, res.physics_groundHeight),
 				// thickness of wall
 				0);
 		wallBottom.setCollisionType(SpriteTag.ground);
@@ -94,7 +94,7 @@ var GameScene = cc.Scene.extend({
 //			//this.magnetEffect.loseMagnet();
 //		}.bind(this), 3000);
 
-		cc.audioEngine.playEffect(res.sound.magnet);
+		cc.audioEngine.playEffect(res.sound_magnet);
 	},
 	
 	collisionShoes: function (arbiter, space) {
@@ -114,7 +114,7 @@ var GameScene = cc.Scene.extend({
 //			//this.magnetEffect.loseMagnet();
 //		}.bind(this), 3000);
 
-		cc.audioEngine.playEffect(res.sound.speedup);
+		cc.audioEngine.playEffect(res.sound_speedup);
 	},
 
 	collisionSpring: function (arbiter, space) {
@@ -126,7 +126,7 @@ var GameScene = cc.Scene.extend({
 		this.scheduleOnce(function(){
 			this.gameLayer.player.loseSpring();
 		}.bind(this), 1300);
-		cc.audioEngine.playEffect(res.sound.spring);
+		cc.audioEngine.playEffect(res.sound_spring);
 	},
 	
 	collisionGold: function (arbiter, space) {
@@ -142,7 +142,7 @@ var GameScene = cc.Scene.extend({
 		}
 
 		//play gold music
-		cc.audioEngine.playEffect(res.sound.gold_mp3);
+		cc.audioEngine.playEffect(res.sound_gold_mp3);
 	},
 
 	collisionFrog: function(arbiter, space) {
@@ -152,7 +152,7 @@ var GameScene = cc.Scene.extend({
 			//this.shapesToRemove.push(shapes[1]);
 			this.gameLayer.frogGenerator.frog.removeFromLayer();
 			//play frog music
-			cc.audioEngine.playEffect(res.sound.enemyDied);
+			cc.audioEngine.playEffect(res.sound_enemyDied);
 			statistics.kill++;
 		}else{
 			this.beAte = true;
@@ -167,7 +167,7 @@ var GameScene = cc.Scene.extend({
 			//this.shapesToRemove.push(shapes[1]);
 			this.gameLayer.birdGenerator.bird.removeFromLayer();
 			//play frog music
-			cc.audioEngine.playEffect(res.sound.enemyDied);
+			cc.audioEngine.playEffect(res.sound_enemyDied);
 			statistics.kill++;
 		}else{
 			this.beAte = true;
@@ -191,7 +191,7 @@ var GameScene = cc.Scene.extend({
 			this.magnetEffect.loseMagnet();
 		}.bind(this), 15000);
 		
-		cc.audioEngine.playEffect(res.sound.magnet);
+		cc.audioEngine.playEffect(res.sound_magnet);
 	},
 	
 	// called by schedule update.
@@ -228,7 +228,7 @@ var GameScene = cc.Scene.extend({
 				this.gameover = true;
 				//play gameover music
 				cc.audioEngine.stopMusic();
-				cc.audioEngine.playEffect(res.sound.game_over);
+				cc.audioEngine.playEffect(res.sound_game_over);
 				this.gameover = true;
 				new_space.push(this.space);
 			}
@@ -246,7 +246,7 @@ var GameScene = cc.Scene.extend({
 							//play gold music
 							statistics.coins += 1;
 							if(statistics.coins % 5 == 0) {
-								cc.audioEngine.playEffect(res.sound.gold_mp3);
+								cc.audioEngine.playEffect(res.sound_gold_mp3);
 							}
 					}
 				}
@@ -277,19 +277,19 @@ var GameScene = cc.Scene.extend({
 		this.controlLayer.addChild(this.gameLayer = new GameLayer(this.space), 1);
 		statistics.reset(this.gameLayer.player);
 
-		this.addChild(this.farBgLayer = new GameBackgroundLayer(res.background.one));
-		this.addChild(this.nearBgLayer = new GameBackgroundLayer(res.background.two));
+		this.addChild(this.farBgLayer = new GameBackgroundLayer(res.background_one));
+		this.addChild(this.nearBgLayer = new GameBackgroundLayer(res.background_two));
 		this.addChild(this.controlLayer, 0);
 		this.addChild(this.hubLayer = new HubLayer(this), 1);
 		
 		//particle
-		var particle = cc.ParticleSystem(res.particle.circle);
+		var particle = cc.ParticleSystem(res.particle_circle);
 		particle.setPosition(800, 100);
 		this.addChild(particle,100);
 		//add background music
 		if(canMusicPlaying) {
 			cc.audioEngine.stopMusic();
-			cc.audioEngine.playMusic(res.sound.bg_mp3, true);
+			cc.audioEngine.playMusic(res.sound_bg_mp3, true);
 			isMusicPlaying = true;
 		}
 

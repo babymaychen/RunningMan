@@ -9,7 +9,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		this._super();
 
 		var winsize = cc.director.getWinSize();
-		var spritebg = new cc.Sprite(res.menu.bg);
+		var spritebg = new cc.Sprite(res.menu_bg);
 
 		spritebg.setPosition(cc.p(0, -30));
 		spritebg.attr({
@@ -33,26 +33,17 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		
 
 		//init logo
-		this.logo = new cc.Sprite(res.menu.logo);
+		this.logo = new cc.Sprite(res.menu_logo);
 		this.logo.setPosition(cc.p(-200, winsize.height-160));
 		this.logo.setScale(0.8);
 		this.addChild(this.logo);
 		var actionTo = cc.MoveTo.create(1, cc.p(250, winsize.height-150)).easing(cc.easeElasticOut());
-		var sequence = cc.Sequence.create(
-				actionTo,
-				cc.CallFunc.create(function (logo) {
-					var shaking = cc.MoveTo.create(1, cc.p(250, winsize.height-250)).easing(cc.easeElasticIn());
-					var shakingBack = cc.MoveTo.create(1, cc.p(250, winsize.height-140)).easing(cc.easeElasticOut());
-					var shakingSeq = cc.Sequence.create(shaking, shakingBack);
-					var shakingSeq = cc.Sequence.create(shaking,shakingBack);
-					logo.runAction(shakingSeq.repeatForever());
-				}, this.logo));
-		this.logo.runAction(sequence);
+		this.logo.runAction(actionTo);
 
 		//exit button
 		this.exitBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn), // normal state image
-				new cc.Sprite(res.ui.backBtn), // select state image
+				new cc.Sprite(res.ui_backBtn), // normal state image
+				new cc.Sprite(res.ui_backBtn), // select state image
 				function(){
 					cc.director.end();
 				}, this));
@@ -62,8 +53,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		// play btn
 		var playBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.playBtn), // normal state image
-				new cc.Sprite(res.menu.playBtnS), // select state image
+				new cc.Sprite(res.menu_playBtn), // normal state image
+				new cc.Sprite(res.menu_playBtnS), // select state image
 				this.onPlay, this));
 		var playBtnPosX = 200, playBtnPosY = 150;
 		playBtn.setPosition(cc.p(-200, winsize.height));
@@ -81,8 +72,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		//storeBtn
 		var storeBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.storeBtn),
-				new cc.Sprite(res.menu.storeBtnS),
+				new cc.Sprite(res.menu_storeBtn),
+				new cc.Sprite(res.menu_storeBtnS),
 				this.onStore, this));
 		storeBtn.setPosition(cc.p(winsize.width+200, winsize.height-220));
 		this.addChild(storeBtn);
@@ -99,8 +90,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		//setting btn
 		var setBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.setBtn),
-				new cc.Sprite(res.menu.setBtnS),
+				new cc.Sprite(res.menu_setBtn),
+				new cc.Sprite(res.menu_setBtnS),
 				this.onSet, this));
 		setBtn.setPosition(cc.p(200, winsize.height-300));
 		this.addChild(setBtn,1);
@@ -117,8 +108,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		//aboutBtn
 		var aboutBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.aboutBtn),
-				new cc.Sprite(res.menu.aboutBtnS),
+				new cc.Sprite(res.menu_aboutBtn),
+				new cc.Sprite(res.menu_aboutBtnS),
 				this.onAbout, this));
 		aboutBtn.setPosition(cc.p(winsize.width-200, winsize.height+100));
 		this.addChild(aboutBtn,1);
@@ -134,8 +125,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		aboutBtn.runAction(seq);
 
 		//add an player here
-		cc.spriteFrameCache.addSpriteFrames(res.panda.plist);
-		this.spriteSheet = cc.SpriteBatchNode.create(res.panda.png);
+		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		this.spriteSheet = cc.SpriteBatchNode.create(res.panda_png);
 
 		// init runningAction
 		this.runningAction = new cc.RepeatForever(new cc.Animate(
@@ -158,7 +149,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		this.spriteSheet.runAction(seq.repeatForever());
 
-		var particle = cc.ParticleSystem.create(res.particle.circle);
+		var particle = cc.ParticleSystem.create(res.particle_circle);
 		particle.setPosition(800, 100);
 		this.addChild(particle,100);
 
@@ -169,7 +160,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 	 * Triggered when play is clicked.
 	 */
 	onPlay : function () {
-		cc.audioEngine.playEffect(res.sound.button);
+		cc.audioEngine.playEffect(res.sound_button);
 		this.addChild(new GameModeLayer(), 100);
 		//cc.director.runScene(new NetworkPlayScene());
 	},
@@ -189,7 +180,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 			onTouchBegan: function(){return true;}
 		}, this.draw);
 
-		this.board = new cc.Sprite(res.ui.setBoard);
+		this.board = new cc.Sprite(res.ui_setBoard);
 		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.board.setScale(0.8);
 		this.addChild(this.board, 5);
@@ -197,8 +188,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		this.board.runAction(actionTo);
 
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width/2-100, winsize.height+160));
 		this.backBtn.attr({
@@ -213,14 +204,14 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		//toggle
 		//effect
-		var on = new cc.MenuItemImage(res.ui.onBtn);
-		var off = new cc.MenuItemImage(res.ui.offBtn);
+		var on = new cc.MenuItemImage(res.ui_onBtn);
+		var off = new cc.MenuItemImage(res.ui_offBtn);
 		if(!canAudioPlaying) {
-			on = new cc.MenuItemImage(res.ui.onBtn);
-			off = new cc.MenuItemImage(res.ui.offBtn);
+			on = new cc.MenuItemImage(res.ui_onBtn);
+			off = new cc.MenuItemImage(res.ui_offBtn);
 		} else {
-			on = new cc.MenuItemImage(res.ui.offBtn);
-			off = new cc.MenuItemImage(res.ui.onBtn);
+			on = new cc.MenuItemImage(res.ui_offBtn);
+			off = new cc.MenuItemImage(res.ui_onBtn);
 		}
 		var toggler = new cc.MenuItemToggle( on, off,
 				function(that){
@@ -234,14 +225,14 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		this.addChild(this.effect, 6);
 
 		//audio
-		var onAudio = new cc.MenuItemImage(res.ui.onBtn);
-		var offAudio = new cc.MenuItemImage(res.ui.offBtn);
+		var onAudio = new cc.MenuItemImage(res.ui_onBtn);
+		var offAudio = new cc.MenuItemImage(res.ui_offBtn);
 		if(!canMusicPlaying){
-			onAudio = new cc.MenuItemImage(res.ui.onBtn);
-			offAudio = new cc.MenuItemImage(res.ui.offBtn);
+			onAudio = new cc.MenuItemImage(res.ui_onBtn);
+			offAudio = new cc.MenuItemImage(res.ui_offBtn);
 		} else {
-			onAudio = new cc.MenuItemImage(res.ui.offBtn);
-			offAudio = new cc.MenuItemImage(res.ui.onBtn);
+			onAudio = new cc.MenuItemImage(res.ui_offBtn);
+			offAudio = new cc.MenuItemImage(res.ui_onBtn);
 		}
 		var toggler = new cc.MenuItemToggle( onAudio, offAudio,
 				function(that){
@@ -256,21 +247,21 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 
 		//difficulty
 
-		var onDiff = new cc.MenuItemImage(res.ui.highBtn);
-		var offDiff = new cc.MenuItemImage(res.ui.lowBtn);
+		var onDiff = new cc.MenuItemImage(res.ui_highBtn);
+		var offDiff = new cc.MenuItemImage(res.ui_lowBtn);
 
 		if(diffDeg == 0) {
-			onDiff = new cc.MenuItemImage(res.ui.highBtn);
-			offDiff = new cc.MenuItemImage(res.ui.lowBtn);
+			onDiff = new cc.MenuItemImage(res.ui_highBtn);
+			offDiff = new cc.MenuItemImage(res.ui_lowBtn);
 		} else {
-			onDiff = new cc.MenuItemImage(res.ui.lowBtn);
-			offDiff = new cc.MenuItemImage(res.ui.highBtn);
+			onDiff = new cc.MenuItemImage(res.ui_lowBtn);
+			offDiff = new cc.MenuItemImage(res.ui_highBtn);
 		}
 
 		var toggler = new cc.MenuItemToggle( onDiff, offDiff,
 				function(that){
 			if(canAudioPlaying){
-				cc.audioEngine.playEffect(res.sound.button);
+				cc.audioEngine.playEffect(res.sound_button);
 			}
 			if(diffDeg == 0) {
 				diffDeg = 1;
@@ -304,26 +295,16 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 			onTouchBegan: function(){return true;}
 		}, this.draw);
 
-		this.board = new cc.Sprite(res.ui.aboutBoard);
+		this.board = new cc.Sprite(res.ui_aboutBoard);
 		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.board.setScale(0.8);
 		this.addChild(this.board, 5);
 		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
 		this.board.runAction(actionTo);
-//		var sequence = cc.Sequence.create(
-//		actionTo,
-//		cc.CallFunc.create(function (logo) {
-//		var shaking = cc.MoveTo.create(1, cc.p(250, winsize.height-250)).easing(cc.easeElasticIn());
-//		var shakingBack = cc.MoveTo.create(1, cc.p(250, winsize.height-140)).easing(cc.easeElasticOut());
-//		var shakingSeq = cc.Sequence.create(shaking, shakingBack);
-//		var shakingSeq = cc.Sequence.create(shaking,shakingBack);
-//		logo.runAction(shakingSeq.repeatForever());
-//		}, this.logo));
-//		this.logo.runAction(sequence);
 
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width+100, 60));
 		this.backBtn.attr({
@@ -361,7 +342,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //			onTouchBegan: function(){return true;},
 //		}, this.draw);
 //
-//		this.board = new cc.Sprite(res.ui.storeBoard);
+//		this.board = new cc.Sprite(res.ui_storeBoard);
 //		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 //		this.board.setScale(0.57);
 //		this.addChild(this.board, 5);
@@ -369,8 +350,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //		this.board.runAction(actionTo);
 //
 //		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.backBtn),
-//				new cc.Sprite(res.ui.backBtn),
+//				new cc.Sprite(res.ui_backBtn),
+//				new cc.Sprite(res.ui_backBtn),
 //				this.backToMenu, this));
 //		this.backBtn.setPosition(cc.p(winsize.width+100, 60));
 //		this.backBtn.attr({
@@ -393,8 +374,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //		this.labelCoins.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+50, winsize.height/2+128)).easing(cc.easeElasticOut()));
 //
 //		this.buyMagnetBtn = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.buy30),
-//				new cc.Sprite(res.ui.buy30),
+//				new cc.Sprite(res.ui_buy30),
+//				new cc.Sprite(res.ui_buy30),
 //				function(){
 //					//buy magnet
 //					if(this.totalCoin - 30 < 0){
@@ -404,7 +385,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //					this.magnetNum++;
 //					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 //					sys.localStorage.setItem("magnet", this.magnetNum);
-//					cc.audioEngine.playEffect(res.sound.button);	
+//					cc.audioEngine.playEffect(res.sound_button);
 //				}, this));
 //		this.buyMagnetBtn.setPosition(cc.p(winsize.width+80, winsize.height/2+70));
 //		this.buyMagnetBtn.attr({
@@ -416,8 +397,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //		this.addChild(this.buyMagnetBtn, 6);
 //
 //		this.buyShoesBtn = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.buy50),
-//				new cc.Sprite(res.ui.buy50),
+//				new cc.Sprite(res.ui_buy50),
+//				new cc.Sprite(res.ui_buy50),
 //				function(){
 //					//buy shoes
 //					if(this.totalCoin - 50 < 0){
@@ -427,7 +408,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //					this.shoesNum++;
 //					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 //					sys.localStorage.setItem("shoes", this.shoesNum);
-//					cc.audioEngine.playEffect(res.sound.button);
+//					cc.audioEngine.playEffect(res.sound_button);
 //				}, this));
 //		this.buyShoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-10));
 //		this.buyShoesBtn.attr({
@@ -439,8 +420,8 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //		this.addChild(this.buyShoesBtn, 6);
 //
 //		this.buyRedshoesBtn = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.buy50),
-//				new cc.Sprite(res.ui.buy50),
+//				new cc.Sprite(res.ui_buy50),
+//				new cc.Sprite(res.ui_buy50),
 //				function(){
 //					//buy red shoes
 //					if(this.totalCoin - 50 < 0){
@@ -450,7 +431,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 //					this.redshoesNum++;
 //					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 //					sys.localStorage.setItem("redshoes", this.redshoesNum);
-//					cc.audioEngine.playEffect(res.sound.button);
+//					cc.audioEngine.playEffect(res.sound_button);
 //				}, this));
 //		this.buyRedshoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-90));
 //		this.buyRedshoesBtn.attr({
@@ -535,7 +516,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 			//change music
 			cc.audioEngine.stopMusic();
 			if(canMusicPlaying) {
-				cc.audioEngine.playMusic(res.sound.menu);
+				cc.audioEngine.playMusic(res.sound_menu);
 			}
 		}
 	}

@@ -24,8 +24,8 @@ var Gold = cc.Class.extend({
 		this.x = posX;
 		this.y = posY;
 		
-		//cc.spriteFrameCache.addSpriteFrames(res.gold.plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.gold.png);
+		cc.spriteFrameCache.addSpriteFrames(res.gold_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.gold_png);
 		
 		this.rotatingAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (i) {
@@ -34,7 +34,7 @@ var Gold = cc.Class.extend({
 		));
 		this.rotatingAction.retain();
 
-		this.sprite = cc.PhysicsSprite.create(cc.spriteFrameCache.getSpriteFrame("#gold0.png"));
+		this.sprite = cc.PhysicsSprite.create("#gold0.png");
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.rotatingAction);
 		this.sprite.retain();

@@ -10,10 +10,10 @@ var WaitLayer= cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 		
-		this.board = new cc.Sprite(res.menu.wait);
+		this.board = new cc.Sprite(res.menu_wait);
 		this.board.setPosition(cc.p(winsize.width/2, winsize.height/2));
 		this.addChild(this.board, 100);
 	}

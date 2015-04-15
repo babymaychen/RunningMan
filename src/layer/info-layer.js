@@ -4,11 +4,11 @@ var InfoLayer = cc.Layer.extend({
 		this._super();
 		
 		var winsize = cc.director.getWinSize();
-		this.bg = new cc.Sprite(res.menu.bg);
+		this.bg = new cc.Sprite(res.menu_bg);
 		this.bg.setPosition(cc.p(winsize.width/2, winsize.height/2));
 		this.addChild(this.bg);
 		
-		this.logo = new cc.Sprite(res.menu.logo);
+		this.logo = new cc.Sprite(res.menu_logo);
 		this.logo.setPosition(cc.p(-200, winsize.height-100));
 		this.logo.setScale(0.4);
 		this.addChild(this.logo);
@@ -16,7 +16,7 @@ var InfoLayer = cc.Layer.extend({
 		var actionTo = cc.MoveTo.create(1, cc.p(150, winsize.height-100)).easing(cc.easeBackInOut());
 		this.logo.runAction(actionTo);
 		
-		this.board = new cc.Sprite(res.info.board);
+		this.board = new cc.Sprite(res.info_board);
 		this.board.setPosition(cc.p(winsize.width/2, winsize.height));
 		this.addChild(this.board);
 		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
@@ -43,8 +43,8 @@ var InfoLayer = cc.Layer.extend({
 		textField.runAction(actionTo);
 
 		this.done = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.info.done),
-				new cc.Sprite(res.info.done),
+				new cc.Sprite(res.info_done),
+				new cc.Sprite(res.info_done),
 				function() {
 					var username = textField.getString();
 					cc.sys.localStorage.setItem("username", username);

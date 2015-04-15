@@ -24,7 +24,7 @@ var Redshoes = cc.Class.extend({
 		this.x = posX;
 		this.y = posY;
 
-		this.spriteSheet = new cc.SpriteBatchNode(res.redshoes.png);
+		this.spriteSheet = new cc.SpriteBatchNode(res.redshoes_png);
 
 		this.rotatingAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([0, 1, 2, 3, 4].map(function (i) {

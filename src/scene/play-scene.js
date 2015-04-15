@@ -62,9 +62,9 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 		var wallBottom = new cp.SegmentShape(
 				space.staticBody,
 				// Start point
-				cp.v(0, res.physics.groundHeight),
+				cp.v(0, res.physics_groundHeight),
 				// MAX INT:4294967295
-				cp.v(4294967295, res.physics.groundHeight),
+				cp.v(4294967295, res.physics_groundHeight),
 				// thickness of wall
 				0);
 		wallBottom.setCollisionType(SpriteTag.ground);
@@ -139,7 +139,7 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 		};
 		var video = {
 			quality: 0
-		}
+		};
 		return {
 			set audioVolume(v) {
 				audio.volume = v;
@@ -150,7 +150,7 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 			set audioEnabled(t) {
 				if (t) {
 					// add background music
-					cc.audioEngine.playMusic(res.sound.bg_mp3, true);
+					cc.audioEngine.playMusic(res.sound_bg_mp3, true);
 					audio.enabled = true;
 				} else {
 					cc.audioEngine.stopMusic();
@@ -162,7 +162,7 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 			},
 			set videoQuality(quality) {
 				if (quality) {
-					var particle = cc.ParticleSystem(res.particle.circle);
+					var particle = cc.ParticleSystem(res.particle_circle);
 					particle.setPosition(800, 100);
 					this.addChild(particle, 100);
 				}
@@ -209,11 +209,11 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 		settings.videoQuality = 0;
 		settings.audioEnabled = false;
 		
-		this.addChild(new RepeatBackgroundLayer(camera, res.background.one, {
+		this.addChild(new RepeatBackgroundLayer(camera, res.background_one, {
 			scaleX: 2,
 			scaleY: 10
 		}));
-		this.addChild(new RepeatBackgroundLayer(camera, res.background.two, {
+		this.addChild(new RepeatBackgroundLayer(camera, res.background_two, {
 			scaleX: 3,
 			scaleY: 10
 		}));

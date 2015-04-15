@@ -74,7 +74,7 @@ var NetworkSlavePlayLayer = cc.Layer.extend(/** @lends NetworkSlavePlayLayer# */
 						// tap to jump.
 						socketio.emit('game:play', JSON.stringify({action:'jump'}));
 						if (settings.audioEnabled) {
-							cc.audioEngine.playEffect(res.sound.jump_mp3);
+							cc.audioEngine.playEffect(res.sound_jump_mp3);
 						}
 						break;
 					}

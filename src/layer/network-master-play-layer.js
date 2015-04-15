@@ -77,7 +77,7 @@ var NetworkMasterPlayLayer = cc.Layer.extend(/** @lends NetworkMasterPlayLayer# 
 						// tap to jump.
 						player.jump();
 						if (settings.audioEnabled) {
-							cc.audioEngine.playEffect(res.sound.jump_mp3);
+							cc.audioEngine.playEffect(res.sound_jump_mp3);
 						}
 					break;
 					}

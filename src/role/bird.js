@@ -12,7 +12,7 @@ var Bird = cc.Class.extend({
 
 	ctor: function (posX, posY) {
 
-		this.spriteSheet = new cc.SpriteBatchNode(res.bird.png);
+		this.spriteSheet = new cc.SpriteBatchNode(res.bird_png);
 
 		this.birdAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3, 4, 5].map(function (i) {

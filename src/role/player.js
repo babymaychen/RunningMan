@@ -35,8 +35,8 @@ var Player = cc.Class.extend({
 	ctor: function (x, y) {
 		this.x = x;
 		this.y = y;
-		//cc.spriteFrameCache.addSpriteFrames(res.panda.plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.panda.png);
+		//cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
 
 		this.runningAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
@@ -97,7 +97,7 @@ var Player = cc.Class.extend({
 		space.addShape(this.shape);
 		
 		//jump effect init
-//		this.stars = cc.ParticleSystem(res.particle.stars);
+//		this.stars = cc.ParticleSystem(res.particle_stars);
 //		this.stars.setPosition(100, 100);
 //		this.layer.addChild(this.stars,3);
 
@@ -156,7 +156,7 @@ var Player = cc.Class.extend({
 		this.isJump = true;
 		if (this.status == 'running') {
 			//Jump music
-			cc.audioEngine.playEffect(res.sound.jump_mp3);
+			cc.audioEngine.playEffect(res.sound_jump_mp3);
 			
 			this.body.applyImpulse(cp.v(0, 4000), cp.v(0, 0));
 			this.status = 'jumpUp';
@@ -182,7 +182,7 @@ var Player = cc.Class.extend({
 //	quickDown: function () {
 //		if (this.status.startsWith('jumpUp') || this.status == 'jumpDown') {
 //			//Jump music
-//			//cc.audioEngine.playEffect(res.sound.jump_mp3);
+//			//cc.audioEngine.playEffect(res.sound_jump_mp3);
 //
 //			this.body.applyImpulse(cp.v(0, -150), cp.v(0, 0));
 //			this.status = 'jumpDown';

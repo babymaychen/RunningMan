@@ -29,10 +29,10 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		cc.MenuItemFont.setFontSize(30);
 
 		//score board
-		this.board = new cc.Sprite(res.over.board);
+		this.board = new cc.Sprite(res.over_board);
 		this.board.attr({
 			x:winSize.width+100,
-			y:winSize.height/2,
+			y:winSize.height/2
 		});
 		this.board.setScale(0.7);
 		this.addChild(this.board,0);
@@ -68,8 +68,8 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.addChild(this.labelScore);
 
 		this.restartBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.over.reload),
-				new cc.Sprite(res.over.reload),
+				new cc.Sprite(res.over_reload),
+				new cc.Sprite(res.over_reload),
 				this.onRestart, this));
 		this.restartBtn.setPosition(cc.p(winSize.width+100, 60));
 		this.restartBtn.attr({
@@ -83,8 +83,8 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.addChild(this.restartBtn, 1);
 
 		this.storeBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.over.store),
-				new cc.Sprite(res.over.store),
+				new cc.Sprite(res.over_store),
+				new cc.Sprite(res.over_store),
 				this.onUpload, this));
 		this.storeBtn.setPosition(cc.p(winSize.width+100, 60));
 		this.storeBtn.attr({
@@ -98,8 +98,8 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.addChild(this.storeBtn, 1);
 
 		this.menuBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.over.menu),
-				new cc.Sprite(res.over.menu),
+				new cc.Sprite(res.over_menu),
+				new cc.Sprite(res.over_menu),
 				this.onMenu, this));
 		this.menuBtn.setPosition(cc.p(winSize.width+100, 60));
 		this.menuBtn.attr({
@@ -113,17 +113,17 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.addChild(this.menuBtn, 1);
 
 		//save data to localstorage
-		var coinsNum = sys.localStorage.getItem("TotalCoin");
+		var coinsNum = cc.sys.localStorage.getItem("TotalCoin");
 		if(!isNaN(coinsNum)) {
 			newCoinsNum = parseInt(coinsNum) + parseInt(statistics.coins);
-			sys.localStorage.setItem("TotalCoin",newCoinsNum);
-			var a = sys.localStorage.getItem("TotalCoin");
+			cc.sys.localStorage.setItem("TotalCoin",newCoinsNum);
+			var a = cc.sys.localStorage.getItem("TotalCoin");
 		} else {
-			sys.localStorage.setItem("TotalCoin",0);
-			coinsNum = sys.localStorage.getItem("TotalCoin");
+			cc.sys.localStorage.setItem("TotalCoin",0);
+			coinsNum = cc.sys.localStorage.getItem("TotalCoin");
 			newCoinsNum = parseInt(statistics.coins);
-			sys.localStorage.setItem("TotalCoin",newCoinsNum);
-			var a = sys.localStorage.getItem("TotalCoin");
+			cc.sys.localStorage.setItem("TotalCoin",newCoinsNum);
+			var a = cc.sys.localStorage.getItem("TotalCoin");
 		}
 	},
 
@@ -183,7 +183,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.menuBtn.runAction(cc.Sequence.create(
 				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
 		//play button effect
-		cc.audioEngine.playEffect(res.sound.button);
+		cc.audioEngine.playEffect(res.sound_button);
 
 		//label out
 		this.labelCoin.runAction(cc.Sequence.create(
@@ -208,7 +208,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 					cc.director.replaceScene(new WelcomeScene());
 				}.bind(this))));
 		//play button effect
-		cc.audioEngine.playEffect(res.sound.button);
+		cc.audioEngine.playEffect(res.sound_button);
 
 		this.restartBtn.runAction(cc.Sequence.create(
 				cc.MoveTo.create(0.7, cc.p(-300, winSize.height/2-165)).easing(cc.easeElasticInOut(0.45))));
@@ -231,13 +231,13 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.openStore = true;
 		cc.audioEngine.stopMusic();
 
-		this.totalCoin = sys.localStorage.getItem("TotalCoin");
-		this.magnetNum = sys.localStorage.getItem("magnet");
-		this.shoesNum = sys.localStorage.getItem("shoes");
-		this.redshoesNum = sys.localStorage.getItem("redshoes");
+		this.totalCoin = cc.sys.localStorage.getItem("TotalCoin");
+		this.magnetNum = cc.sys.localStorage.getItem("magnet");
+		this.shoesNum = cc.sys.localStorage.getItem("shoes");
+		this.redshoesNum = cc.sys.localStorage.getItem("redshoes");
 
 		if(canMusicPlaying) {
-			cc.audioEngine.playMusic(res.sound.shopping, true);
+			cc.audioEngine.playMusic(res.sound_shopping, true);
 		}
 		var winsize = cc.director.getWinSize();
 		this.draw = new cc.DrawNode();
@@ -247,10 +247,10 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 
-		this.sboard = new cc.Sprite(res.ui.storeBoard);
+		this.sboard = new cc.Sprite(res.ui_storeBoard);
 		this.sboard.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.sboard.setScale(0.57);
 		this.addChild(this.sboard, 5);
@@ -258,8 +258,8 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.sboard.runAction(actionTo);
 
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width+100, 60));
 		this.backBtn.attr({
@@ -282,8 +282,8 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		this.labelCoins.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+50, winsize.height/2+128)).easing(cc.easeElasticOut()));
 
 		this.buyMagnetBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy30),
-				new cc.Sprite(res.ui.buy30),
+				new cc.Sprite(res.ui_buy30),
+				new cc.Sprite(res.ui_buy30),
 				function(){
 					//buy magnet
 					if(this.totalCoin - 30 < 0){
@@ -291,22 +291,22 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 					}
 					this.totalCoin -= 30;
 					this.magnetNum++;
-					sys.localStorage.setItem("TotalCoin", this.totalCoin);
-					sys.localStorage.setItem("magnet", this.magnetNum);
-					cc.audioEngine.playEffect(res.sound.button);	
+					cc.sys.localStorage.setItem("TotalCoin", this.totalCoin);
+					cc.sys.localStorage.setItem("magnet", this.magnetNum);
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyMagnetBtn.setPosition(cc.p(winsize.width+80, winsize.height/2+70));
 		this.buyMagnetBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyMagnetBtn.setScale(0.6);
 		this.buyMagnetBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2+70)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyMagnetBtn, 6);
 
 		this.buyShoesBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy50),
-				new cc.Sprite(res.ui.buy50),
+				new cc.Sprite(res.ui_buy50),
+				new cc.Sprite(res.ui_buy50),
 				function(){
 					//buy shoes
 					if(this.totalCoin - 50 < 0){
@@ -314,22 +314,22 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 					}
 					this.totalCoin -= 50;
 					this.shoesNum++;
-					sys.localStorage.setItem("TotalCoin", this.totalCoin);
-					sys.localStorage.setItem("shoes", this.shoesNum);
-					cc.audioEngine.playEffect(res.sound.button);
+					cc.sys.localStorage.setItem("TotalCoin", this.totalCoin);
+					cc.sys.localStorage.setItem("shoes", this.shoesNum);
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyShoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-10));
 		this.buyShoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyShoesBtn.setScale(0.6);
 		this.buyShoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-10)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyShoesBtn, 6);
 
 		this.buyRedshoesBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy50),
-				new cc.Sprite(res.ui.buy50),
+				new cc.Sprite(res.ui_buy50),
+				new cc.Sprite(res.ui_buy50),
 				function(){
 					//buy red shoes
 					if(this.totalCoin - 50 < 0){
@@ -337,14 +337,14 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 					}
 					this.totalCoin -= 50;
 					this.redshoesNum++;
-					sys.localStorage.setItem("TotalCoin", this.totalCoin);
-					sys.localStorage.setItem("redshoes", this.redshoesNum);
-					cc.audioEngine.playEffect(res.sound.button);
+					cc.sys.localStorage.setItem("TotalCoin", this.totalCoin);
+					cc.sys.localStorage.setItem("redshoes", this.redshoesNum);
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyRedshoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-90));
 		this.buyRedshoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyRedshoesBtn.setScale(0.6);
 		this.buyRedshoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-90)).easing(cc.easeElasticOut()));
@@ -389,7 +389,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 		};
 		xhr.open('POST', 'http://endless-journey-server.coding.io/game/scores', true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		var username = sys.localStorage.getItem("username");
+		var username = cc.sys.localStorage.getItem("username");
 		xhr.send(JSON.stringify({
 			id: username,
 			meter: statistics.meter,
@@ -430,7 +430,7 @@ var StatisticsLayer = cc.LayerColor.extend(/**@lends StatisticsLayer# */{
 			this.labelRedshoes.runAction(cc.MoveTo.create(1, cc.p(-250, winsize.height/6-5)).easing(cc.easeElasticInOut(0.45)));
 			//change music
 			cc.audioEngine.stopMusic();
-			cc.audioEngine.playMusic(res.sound.bg_mp3);
+			cc.audioEngine.playMusic(res.sound_bg_mp3);
 		}
 	},
 	

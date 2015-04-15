@@ -15,25 +15,25 @@ var NetworkHubLayer = cc.Layer.extend({
 		
 		var winSize = cc.director.getWinSize();
 		
-		var goldbar = new cc.Sprite(res.ui.goldbar);
+		var goldbar = new cc.Sprite(res.ui_goldbar);
 		goldbar.attr({
 			x: 120,
 			y: winSize.height - 40
 		});
 		this.addChild(goldbar);
 		
-		this.energybar = new cc.Sprite(res.ui.energybar);
+		this.energybar = new cc.Sprite(res.ui_energybar);
 		this.energybar.attr({
 			x: 350,
 			y: winSize.height - 40
 		});
 		this.addChild(this.energybar);
 		
-		this.progress = new cc.Sprite(res.ui.progress);
+		this.progress = new cc.Sprite(res.ui_progress);
 		this.progress.attr({
 			x: 303.5,
 			y: winSize.height - 41,
-			anchorX:0,
+			anchorX:0
 		});
 		this.progress.setScaleX(0.00001);
 		this.progress.setScaleY(0.9);
@@ -46,7 +46,7 @@ var NetworkHubLayer = cc.Layer.extend({
 		this.addChild(this.labelCoin);
 		
 		// running distance
-		this.distance = new cc.Sprite(res.ui.distance);
+		this.distance = new cc.Sprite(res.ui_distance);
 		this.distance.attr({
 			x: 490,
 			y: winSize.height - 40,
@@ -61,8 +61,8 @@ var NetworkHubLayer = cc.Layer.extend({
 		this.addChild(this.labelrun);
 		
 		// sound control btn
-		var soundOn = new cc.MenuItemImage(res.ui.soundOn);
-		var soundOff = new cc.MenuItemImage(res.ui.soundOff);
+		var soundOn = new cc.MenuItemImage(res.ui_soundOn);
+		var soundOff = new cc.MenuItemImage(res.ui_soundOff);
 		var toggler = new cc.MenuItemToggle( soundOn, soundOff,
 				function(){
 						if(settings.audioEnabled){
@@ -78,15 +78,15 @@ var NetworkHubLayer = cc.Layer.extend({
 		this.addChild(soundBtn);
 		
 		///
-		this.indicator = new cc.Sprite(res.menu.enable);
+		this.indicator = new cc.Sprite(res.menu_enable);
 		this.indicator.setPosition(cc.p(50, 50));
 		this.indicator.setScale(0.6);
 		this.addChild(this.indicator, 100);
 
 		// prop set
 //		this.magnetProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.magnetProp),
-//				new cc.Sprite(res.ui.magnetProp),
+//				new cc.Sprite(res.ui_magnetProp),
+//				new cc.Sprite(res.ui_magnetProp),
 //				function(){
 //					if(this.mNum > 0) {
 //						this.magnetEffect = new MagnetEffect();
@@ -100,7 +100,7 @@ var NetworkHubLayer = cc.Layer.extend({
 //							this.magnetEffect.loseMagnet();
 //						}.bind(this), 15000);
 //
-//						cc.audioEngine.playEffect(res.sound.magnet);
+//						cc.audioEngine.playEffect(res.sound_magnet);
 //						
 //						this.mNum--;
 //						sys.localStorage.setItem("magnet", this.mNum);
@@ -112,8 +112,8 @@ var NetworkHubLayer = cc.Layer.extend({
 //		this.addChild(this.magnetProp);
 //		
 //		this.shoesProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.shoesProp),
-//				new cc.Sprite(res.ui.shoesProp),
+//				new cc.Sprite(res.ui_shoesProp),
+//				new cc.Sprite(res.ui_shoesProp),
 //				function(){
 //					if(this.sNum > 0) {
 //						this.player.getShoesAndSpeedUp();
@@ -130,7 +130,7 @@ var NetworkHubLayer = cc.Layer.extend({
 //							this.magnetEffect.loseMagnet();
 //						}.bind(this), 15000);
 //
-//						cc.audioEngine.playEffect(res.sound.speedup);
+//						cc.audioEngine.playEffect(res.sound_speedup);
 //					}
 //					
 //				}, this));
@@ -142,8 +142,8 @@ var NetworkHubLayer = cc.Layer.extend({
 //		this.addChild(this.shoesProp);
 //		
 //		this.redshoesProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui.redshoesProp),
-//				new cc.Sprite(res.ui.redshoesProp),
+//				new cc.Sprite(res.ui_redshoesProp),
+//				new cc.Sprite(res.ui_redshoesProp),
 //				function(){
 //					
 //					if(this.rNum > 0) {
@@ -161,7 +161,7 @@ var NetworkHubLayer = cc.Layer.extend({
 //							this.magnetEffect.loseMagnet();
 //						}.bind(this), 15000);
 //
-//						cc.audioEngine.playEffect(res.sound.magnet);
+//						cc.audioEngine.playEffect(res.sound_magnet);
 //					}
 //					
 //				}, this));
@@ -189,7 +189,7 @@ var NetworkHubLayer = cc.Layer.extend({
 //		this.RedshoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+28));
 //		this.addChild(this.RedshoesNum, 10);
 		///
-		this.indicator = new cc.Sprite(res.menu.enable);
+		this.indicator = new cc.Sprite(res.menu_enable);
 		this.indicator.setPosition(cc.p(50, 50));
 		this.indicator.setScale(0.6);
 		this.addChild(this.indicator, 100);
@@ -214,9 +214,9 @@ var NetworkHubLayer = cc.Layer.extend({
 		}
 		
 		if (this.playLayer.touchable) {
-			this.indicator.setTexture(res.menu.enable);
+			this.indicator.setTexture(res.menu_enable);
 		} else {
-			this.indicator.setTexture(res.menu.disable);
+			this.indicator.setTexture(res.menu_disable);
 		}
 	},
 	

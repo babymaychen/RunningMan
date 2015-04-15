@@ -7,11 +7,11 @@ var GameOpeningLayer = cc.Layer.extend({
 	ctor : function() {
 		this._super();
 		var size = cc.director.getWinSize();
-		var bg = new cc.Sprite(res.open.bg);
+		var bg = new cc.Sprite(res.open_bg);
 		bg.setPosition(cc.p(size.width/2, size.height/2));
 		this.addChild(bg, 0);
 		
-		var team = new cc.Sprite(res.open.team);
+		var team = new cc.Sprite(res.open_team);
 		team.setPosition(cc.p(size.width/2, size.height/2));
 		team.setScale(0.4);
 		this.addChild(team, 1);
@@ -25,18 +25,18 @@ var GameOpeningLayer = cc.Layer.extend({
 				fadeOut);
 		team.runAction(seq);
 
-		//cc.audioEngine.playEffect(res.sound.opening);
+		//cc.audioEngine.playEffect(res.sound_opening);
 		
 		//load plist res to memory
-		cc.spriteFrameCache.addSpriteFrames(res.gold.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.platform.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.panda.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.shoes.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.redshoes.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.spring.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.bird.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.enemy.plist);
-		cc.spriteFrameCache.addSpriteFrames(res.magnet.plist);
+		cc.spriteFrameCache.addSpriteFrames(res.gold_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.platform_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.shoes_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.redshoes_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.spring_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.bird_plist);
+		//cc.spriteFrameCache.addSpriteFrames(res.enemy_plist);
+		cc.spriteFrameCache.addSpriteFrames(res.magnet_plist);
 		
 		//load image to memory	
 		String.prototype.endWith=function(s){
@@ -47,8 +47,18 @@ var GameOpeningLayer = cc.Layer.extend({
 			else
 				return false;
 			return true;
-		}
-		
+		};
+
+		String.prototype.startsWith=function(str){
+			if(str==null||str==""||this.length==0||str.length>this.length)
+				return false;
+			if(this.substr(0,str.length)==str)
+				return true;
+			else
+				return false;
+			return true;
+		};
+
 		//find all image
 		var temp = [];
 		for (var i in res) {

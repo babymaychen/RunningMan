@@ -17,21 +17,21 @@ var RankLayer = cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 		
 		//init rank elements
-		this.board = new cc.Sprite(res.rank.board);
+		this.board = new cc.Sprite(res.rank_board);
 		this.board.setPosition(cc.p(winsize.width/2, winsize.height));
 		this.board.setScale(0.55);
 		this.addChild(this.board,10);
 		
-		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
-		this.board.runAction(actionTo);
+		var actionTo1 = cc.MoveTo.create(1, cc.p(winsize.width/2, winsize.height/2)).easing(cc.easeElasticOut());
+		this.board.runAction(actionTo1);
 		
 		this.back = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				function() {
 					cc.log(1);
 					cc.director.runScene(new WelcomeScene());
@@ -40,8 +40,8 @@ var RankLayer = cc.Layer.extend({
 		this.back.setPosition(cc.p(winsize.width/2-150, winsize.height));
 		this.addChild(this.back,11);
 		
-		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2-150, 0)).easing(cc.easeElasticOut());
-		this.back.runAction(actionTo);
+		var actionTo1 = cc.MoveTo.create(1, cc.p(winsize.width/2-150, 0)).easing(cc.easeElasticOut());
+		this.back.runAction(actionTo1);
 		
 		//print data to screen
 		/*
@@ -51,8 +51,8 @@ var RankLayer = cc.Layer.extend({
 		this.myRank.setColor(cc.color(67, 144, 67));// white color
 		this.myRank.setPosition(cc.p(winsize.width/2+30, winsize.height));
 		this.addChild(this.myRank,13);
-		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2+30, winsize.height-98)).easing(cc.easeElasticOut());
-		this.myRank.runAction(actionTo);
+		var actionTo1 = cc.MoveTo.create(1, cc.p(winsize.width/2+30, winsize.height-98)).easing(cc.easeElasticOut());
+		this.myRank.runAction(actionTo1);
 		
 		//get data from server
 		var xhr = new XMLHttpRequest();

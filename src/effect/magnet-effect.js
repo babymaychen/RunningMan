@@ -6,7 +6,7 @@ var MagnetEffect = cc.Layer.extend({
 	
 	getMagnet: function() {
 		var winSize = cc.director.getWinSize();
-		this.effect = new cc.Sprite(res.magnet.effect);
+		this.effect = new cc.Sprite(res.magnet_effect);
 		this.effect.setPosition(cc.p(winSize.width/2, winSize.height/2));
 		this.addChild(this.effect);
 
@@ -23,6 +23,6 @@ var MagnetEffect = cc.Layer.extend({
 	},
 	
 	loseMagnet: function() {
-		cc.audioEngine.playEffect(res.sound.lose_prop);
+		cc.audioEngine.playEffect(res.sound_lose_prop);
 	}
 });

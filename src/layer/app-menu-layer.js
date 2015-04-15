@@ -9,7 +9,7 @@ var AppMenuLayer = cc.Layer.extend({
 		this._super();
 
 		var winsize = cc.director.getWinSize();
-		var spritebg = new cc.Sprite(res.menu.bg);
+		var spritebg = new cc.Sprite(res.menu_bg);
 		
 		spritebg.setPosition(cc.p(0, -30));
 		spritebg.attr({
@@ -27,7 +27,7 @@ var AppMenuLayer = cc.Layer.extend({
 		cc.MenuItemFont.setFontSize(60);
 		
 		//init logo
-		this.logo = new cc.Sprite(res.menu.logo);
+		this.logo = new cc.Sprite(res.menu_logo);
 		this.logo.setPosition(cc.p(-200, winsize.height-160));
 		this.logo.setScale(0.8);
 		this.addChild(this.logo);
@@ -38,15 +38,14 @@ var AppMenuLayer = cc.Layer.extend({
 					var shaking = cc.MoveTo.create(1, cc.p(250, winsize.height-250)).easing(cc.easeElasticIn());
 					var shakingBack = cc.MoveTo.create(1, cc.p(250, winsize.height-140)).easing(cc.easeElasticOut());
 					var shakingSeq = cc.Sequence.create(shaking, shakingBack);
-					var shakingSeq = cc.Sequence.create(shaking,shakingBack);
 					logo.runAction(shakingSeq.repeatForever());
 				}, this.logo));
 		this.logo.runAction(sequence);
 
 		//exit button
 		this.exitBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn), // normal state image
-				new cc.Sprite(res.ui.backBtn), // select state image
+				new cc.Sprite(res.ui_backBtn), // normal state image
+				new cc.Sprite(res.ui_backBtn), // select state image
 				function(){
 					cc.director.end();
 				}, this));
@@ -56,8 +55,8 @@ var AppMenuLayer = cc.Layer.extend({
 		
 		// play btn
 		var playBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.playBtn), // normal state image
-				new cc.Sprite(res.menu.playBtnS), // select state image
+				new cc.Sprite(res.menu_playBtn), // normal state image
+				new cc.Sprite(res.menu_playBtnS), // select state image
 				this.onPlay, this));
 		var playBtnPosX = 200, playBtnPosY = 150;
 		playBtn.setPosition(cc.p(-200, winsize.height));
@@ -68,15 +67,14 @@ var AppMenuLayer = cc.Layer.extend({
 					var shaking = cc.MoveTo.create(1, cc.p(playBtnPosX, playBtnPosY)).easing(cc.easeIn(2.0));
 					var shakingBack = cc.MoveTo.create(1, cc.p(playBtnPosX, playBtnPosY-10)).easing(cc.easeOut(2.0));
 					var shakingSeq = cc.Sequence.create(shaking, shakingBack);
-					var shakingSeq = cc.Sequence.create(shaking, shakingBack);
 					playBtn.runAction(shakingSeq.repeatForever());
 				},playBtn));
 		playBtn.runAction(seq);
 
 		//storeBtn
 		var storeBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.storeBtn),
-				new cc.Sprite(res.menu.storeBtnS),
+				new cc.Sprite(res.menu_storeBtn),
+				new cc.Sprite(res.menu_storeBtnS),
 				this.onStore, this));
 		storeBtn.setPosition(cc.p(winsize.width+200, winsize.height-220));
 		this.addChild(storeBtn);
@@ -93,8 +91,8 @@ var AppMenuLayer = cc.Layer.extend({
 		
 		//setting btn
 		var setBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.setBtn),
-				new cc.Sprite(res.menu.setBtnS),
+				new cc.Sprite(res.menu_setBtn),
+				new cc.Sprite(res.menu_setBtnS),
 				this.onSet, this));
 		setBtn.setPosition(cc.p(200, winsize.height-300));
 		this.addChild(setBtn,1);
@@ -111,8 +109,8 @@ var AppMenuLayer = cc.Layer.extend({
 
 		//aboutBtn
 		var aboutBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.menu.aboutBtn),
-				new cc.Sprite(res.menu.aboutBtnS),
+				new cc.Sprite(res.menu_aboutBtn),
+				new cc.Sprite(res.menu_aboutBtnS),
 				this.onAbout, this));
 		aboutBtn.setPosition(cc.p(winsize.width-200, winsize.height+100));
 		this.addChild(aboutBtn,1);
@@ -128,8 +126,8 @@ var AppMenuLayer = cc.Layer.extend({
 		aboutBtn.runAction(seq);
 		
 		//add an player here
-		cc.spriteFrameCache.addSpriteFrames(res.panda.plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.panda.png);
+		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
 		this.runningAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
 					return cc.spriteFrameCache.getSpriteFrame("panda_run_0" + i + ".png");
@@ -150,14 +148,14 @@ var AppMenuLayer = cc.Layer.extend({
 		
 		this.spriteSheet.runAction(seq.repeatForever());
 		
-		var particle = cc.ParticleSystem(res.particle.circle);
+		var particle = cc.ParticleSystem(res.particle_circle);
 		particle.setPosition(800, 100);
 		this.addChild(particle,100);
 
 		//play opening music
 		if(canMusicPlaying){
 			cc.audioEngine.stopMusic();
-			cc.audioEngine.playMusic(res.sound.menu, true);
+			cc.audioEngine.playMusic(res.sound_menu, true);
 			isMusicPlaying = true;
 		} else {
 			isMusicPlaying = false;
@@ -170,7 +168,7 @@ var AppMenuLayer = cc.Layer.extend({
 	 * Triggered when play is clicked.
 	 */
 	onPlay : function () {
-		cc.audioEngine.playEffect(res.sound.button);
+		cc.audioEngine.playEffect(res.sound_button);
 		this.addChild(new GameModeLayer(), 100);
 		//cc.director.replaceScene(new GameScene());
 	},
@@ -187,10 +185,10 @@ var AppMenuLayer = cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 
-		this.board = new cc.Sprite(res.ui.setBoard);
+		this.board = new cc.Sprite(res.ui_setBoard);
 		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.board.setScale(0.8);
 		this.addChild(this.board, 5);
@@ -198,8 +196,8 @@ var AppMenuLayer = cc.Layer.extend({
 		this.board.runAction(actionTo);
 
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width/2-100, winsize.height+160));
 		this.backBtn.attr({
@@ -214,19 +212,19 @@ var AppMenuLayer = cc.Layer.extend({
 		
 		//toggle
 		//effect
-		var on = new cc.MenuItemImage(res.ui.onBtn);
-		var off = new cc.MenuItemImage(res.ui.offBtn);
+		var on = new cc.MenuItemImage(res.ui_onBtn);
+		var off = new cc.MenuItemImage(res.ui_offBtn);
 		if(!canAudioPlaying) {
-			on = new cc.MenuItemImage(res.ui.onBtn);
-			off = new cc.MenuItemImage(res.ui.offBtn);
+			on = new cc.MenuItemImage(res.ui_onBtn);
+			off = new cc.MenuItemImage(res.ui_offBtn);
 		} else {
-			on = new cc.MenuItemImage(res.ui.offBtn);
-			off = new cc.MenuItemImage(res.ui.onBtn);
+			on = new cc.MenuItemImage(res.ui_offBtn);
+			off = new cc.MenuItemImage(res.ui_onBtn);
 		}
 		var toggler = new cc.MenuItemToggle( on, off,
 				function(that){
 					if(canAudioPlaying){
-						cc.audioEngine.playEffect(res.sound.button);
+						cc.audioEngine.playEffect(res.sound_button);
 					}
 					if(canAudioPlaying) {
 						canAudioPlaying = false;
@@ -244,19 +242,19 @@ var AppMenuLayer = cc.Layer.extend({
 		this.addChild(this.effect, 6);
 		
 		//audio
-		var onAudio = new cc.MenuItemImage(res.ui.onBtn);
-		var offAudio = new cc.MenuItemImage(res.ui.offBtn);
+		var onAudio = new cc.MenuItemImage(res.ui_onBtn);
+		var offAudio = new cc.MenuItemImage(res.ui_offBtn);
 		if(!canMusicPlaying){
-			onAudio = new cc.MenuItemImage(res.ui.onBtn);
-			offAudio = new cc.MenuItemImage(res.ui.offBtn);
+			onAudio = new cc.MenuItemImage(res.ui_onBtn);
+			offAudio = new cc.MenuItemImage(res.ui_offBtn);
 		} else {
-			onAudio = new cc.MenuItemImage(res.ui.offBtn);
-			offAudio = new cc.MenuItemImage(res.ui.onBtn);
+			onAudio = new cc.MenuItemImage(res.ui_offBtn);
+			offAudio = new cc.MenuItemImage(res.ui_onBtn);
 		}
 		var toggler = new cc.MenuItemToggle( onAudio, offAudio,
 				function(that){
 					if(canAudioPlaying){
-						cc.audioEngine.playEffect(res.sound.button);
+						cc.audioEngine.playEffect(res.sound_button);
 					}
 					if(canMusicPlaying) {
 						canMusicPlaying = false;
@@ -277,21 +275,21 @@ var AppMenuLayer = cc.Layer.extend({
 		
 		//difficulty
 		
-		var onDiff = new cc.MenuItemImage(res.ui.highBtn);
-		var offDiff = new cc.MenuItemImage(res.ui.lowBtn);
+		var onDiff = new cc.MenuItemImage(res.ui_highBtn);
+		var offDiff = new cc.MenuItemImage(res.ui_lowBtn);
 		
 		if(diffDeg == 0) {
-			onDiff = new cc.MenuItemImage(res.ui.highBtn);
-			offDiff = new cc.MenuItemImage(res.ui.lowBtn);
+			onDiff = new cc.MenuItemImage(res.ui_highBtn);
+			offDiff = new cc.MenuItemImage(res.ui_lowBtn);
 		} else {
-			onDiff = new cc.MenuItemImage(res.ui.lowBtn);
-			offDiff = new cc.MenuItemImage(res.ui.highBtn);
+			onDiff = new cc.MenuItemImage(res.ui_lowBtn);
+			offDiff = new cc.MenuItemImage(res.ui_highBtn);
 		}
 		
 		var toggler = new cc.MenuItemToggle( onDiff, offDiff,
 				function(that){
 					if(canAudioPlaying){
-						cc.audioEngine.playEffect(res.sound.button);
+						cc.audioEngine.playEffect(res.sound_button);
 					}
 					if(diffDeg == 0) {
 						diffDeg = 1;
@@ -322,10 +320,10 @@ var AppMenuLayer = cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 		
-		this.board = new cc.Sprite(res.ui.aboutBoard);
+		this.board = new cc.Sprite(res.ui_aboutBoard);
 		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.board.setScale(0.8);
 		this.addChild(this.board, 5);
@@ -343,8 +341,8 @@ var AppMenuLayer = cc.Layer.extend({
 //		this.logo.runAction(sequence);
 		
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width+100, 60));
 		this.backBtn.attr({
@@ -372,7 +370,7 @@ var AppMenuLayer = cc.Layer.extend({
 		this.redshoesNum = sys.localStorage.getItem("redshoes");
 		
 		if(canMusicPlaying) {
-			cc.audioEngine.playMusic(res.sound.shopping, true);
+			cc.audioEngine.playMusic(res.sound_shopping, true);
 		}
 		var winsize = cc.director.getWinSize();
 		this.draw = new cc.DrawNode();
@@ -382,10 +380,10 @@ var AppMenuLayer = cc.Layer.extend({
 		cc.eventManager.addListener({
 			event: cc.EventListener.TOUCH_ONE_BY_ONE,
 			swallowTouches: true,
-			onTouchBegan: function(){return true;},
+			onTouchBegan: function(){return true;}
 		}, this.draw);
 		
-		this.board = new cc.Sprite(res.ui.storeBoard);
+		this.board = new cc.Sprite(res.ui_storeBoard);
 		this.board.setPosition(cc.p(winsize.width/2+300, winsize.height/2));
 		this.board.setScale(0.57);
 		this.addChild(this.board, 5);
@@ -393,8 +391,8 @@ var AppMenuLayer = cc.Layer.extend({
 		this.board.runAction(actionTo);
 		
 		this.backBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.backBtn),
-				new cc.Sprite(res.ui.backBtn),
+				new cc.Sprite(res.ui_backBtn),
+				new cc.Sprite(res.ui_backBtn),
 				this.backToMenu, this));
 		this.backBtn.setPosition(cc.p(winsize.width+100, 60));
 		this.backBtn.attr({
@@ -417,8 +415,8 @@ var AppMenuLayer = cc.Layer.extend({
 		this.labelCoins.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+50, winsize.height/2+128)).easing(cc.easeElasticOut()));
 		
 		this.buyMagnetBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy30),
-				new cc.Sprite(res.ui.buy30),
+				new cc.Sprite(res.ui_buy30),
+				new cc.Sprite(res.ui_buy30),
 				function(){
 					//buy magnet
 					if(this.totalCoin - 30 < 0){
@@ -428,20 +426,20 @@ var AppMenuLayer = cc.Layer.extend({
 					this.magnetNum++;
 					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 					sys.localStorage.setItem("magnet", this.magnetNum);
-					cc.audioEngine.playEffect(res.sound.button);	
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyMagnetBtn.setPosition(cc.p(winsize.width+80, winsize.height/2+70));
 		this.buyMagnetBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyMagnetBtn.setScale(0.6);
 		this.buyMagnetBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2+70)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyMagnetBtn, 6);
 		
 		this.buyShoesBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy50),
-				new cc.Sprite(res.ui.buy50),
+				new cc.Sprite(res.ui_buy50),
+				new cc.Sprite(res.ui_buy50),
 				function(){
 					//buy shoes
 					if(this.totalCoin - 50 < 0){
@@ -451,20 +449,20 @@ var AppMenuLayer = cc.Layer.extend({
 					this.shoesNum++;
 					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 					sys.localStorage.setItem("shoes", this.shoesNum);
-					cc.audioEngine.playEffect(res.sound.button);
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyShoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-10));
 		this.buyShoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyShoesBtn.setScale(0.6);
 		this.buyShoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-10)).easing(cc.easeElasticOut()));
 		this.addChild(this.buyShoesBtn, 6);
 		
 		this.buyRedshoesBtn = new cc.Menu(new cc.MenuItemSprite(
-				new cc.Sprite(res.ui.buy50),
-				new cc.Sprite(res.ui.buy50),
+				new cc.Sprite(res.ui_buy50),
+				new cc.Sprite(res.ui_buy50),
 				function(){
 					//buy red shoes
 					if(this.totalCoin - 50 < 0){
@@ -474,12 +472,12 @@ var AppMenuLayer = cc.Layer.extend({
 					this.redshoesNum++;
 					sys.localStorage.setItem("TotalCoin", this.totalCoin);
 					sys.localStorage.setItem("redshoes", this.redshoesNum);
-					cc.audioEngine.playEffect(res.sound.button);
+					cc.audioEngine.playEffect(res.sound_button);
 				}, this));
 		this.buyRedshoesBtn.setPosition(cc.p(winsize.width+80, winsize.height/2-90));
 		this.buyRedshoesBtn.attr({
 			anchorX: 0,
-			anchorY: 0,
+			anchorY: 0
 		});
 		this.buyRedshoesBtn.setScale(0.6);
 		this.buyRedshoesBtn.runAction(cc.MoveTo.create(1, cc.p(winsize.width/2+80, winsize.height/2-90)).easing(cc.easeElasticOut()));
@@ -556,7 +554,7 @@ var AppMenuLayer = cc.Layer.extend({
 			//change music
 			cc.audioEngine.stopMusic();
 			if(canMusicPlaying) {
-				cc.audioEngine.playMusic(res.sound.menu);
+				cc.audioEngine.playMusic(res.sound_menu);
 			}
 		}
 	}

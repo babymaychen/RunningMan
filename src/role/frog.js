@@ -18,17 +18,17 @@ var Frog = cc.Class.extend({
 	 * Construct a new player.
 	 */
 	ctor: function (posX, posY) {
-
-		this.spriteSheet = new cc.SpriteBatchNode(res.enemy.png);
+		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
 
 		this.frogAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3, 4, 5, 6].map(function (i) {
-					return cc.spriteFrameCache.getSpriteFrame("enemy_frog_" + i + ".png");
+					return cc.spriteFrameCache.getSpriteFrame("panda_run_0" + i + ".png");
 				}), 0.15)
 		));
 		this.frogAction.retain();
 
-		this.sprite = new cc.PhysicsSprite("#enemy_frog_1.png");
+		this.sprite = new cc.PhysicsSprite("#panda_run_01.png");
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.frogAction);
 		this.sprite.retain();

@@ -26,7 +26,7 @@ var BirdGenerator =  cc.Class.extend({
 //			this.layer.objects.push(bird);
 			if(this.layer.player.sprite.getPositionX() - this.bird.getX() > 250) {
 				this.bird.body.setPos(cc.p(this.px, this.py));
-				cc.audioEngine.playEffect(res.sound.alert);
+				cc.audioEngine.playEffect(res.sound_alert);
 			}
 		}
 	},

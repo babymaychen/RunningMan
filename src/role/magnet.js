@@ -19,7 +19,7 @@ var Magnet = cc.Class.extend({
 		this.x = posX;
 		this.y = posY;
 		
-		this.spriteSheet = new cc.SpriteBatchNode(res.magnet.png);
+		this.spriteSheet = new cc.SpriteBatchNode(res.magnet_png);
 
 		this.magnetAction = new cc.RepeatForever(new cc.Animate(
 				new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
