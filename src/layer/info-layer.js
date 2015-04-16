@@ -44,17 +44,23 @@ var InfoLayer = cc.Layer.extend({
 
 		this.done = new cc.Menu(new cc.MenuItemSprite(
 				new cc.Sprite(res.info_done),
-				new cc.Sprite(res.info_done),
-				function() {
-					var username = textField.getString();
-					cc.sys.localStorage.setItem("username", username);
-					cc.director.runScene(new WelcomeScene());
-				}.bind(this), this));
+				new cc.Sprite(res.menu_enable),
+			    this.onPlay, this));
 		this.done.setPosition(cc.p(winsize.width/2+120, winsize.height));
 		this.addChild(this.done, 10);
 		var actionTo = cc.MoveTo.create(1, cc.p(winsize.width/2+120, winsize.height/2-65)).easing(cc.easeElasticOut());
 		this.done.runAction(actionTo);
 		
+	},
+
+	onRunNextScene: function() {
+		cc.director.runScene(new WelcomeScene());
+	},
+
+	onPlay : function () {
+		cc.audioEngine.playEffect(res.sound_button);
+		this.addChild(new GameModeLayer(), 100);
+		//cc.director.runScene(new NetworkPlayScene());
 	},
 	
 	onClickTrackNode:function (clicked) {

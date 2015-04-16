@@ -13,21 +13,30 @@ var SplashScene = cc.Scene.extend(/** @lends SplashScene# */{
 	 * Constructor of cc.Scene
 	 */
 	_className: "SplashScene",
-
-	ctor: function () {
+	onEnter:function() {
 		this._super();
-		this.init();
 		var open = new GameOpeningLayer();
 		open.bake();
 		this.addChild(open, 1, 1);
+		this.schedule(function(){
+			var dd = cc.sys.localStorage.getItem("username");
+			//cc.log(dd.length == 0);
+			cc.director.runScene(new InfoScene());
+		}, 2);
+	}
+
+	/*ctor: function () {
+		this._super();
+		/!*var open = new GameOpeningLayer();
+		open.bake();
+		this.addChild(open, 1, 1);*!/
+		cc.director.runScene(new InfoScene());
 		setTimeout(function(){
-			var layer = new GameMenuLayer();
-			
 			if(cc.sys.localStorage.getItem("username")){
 				cc.director.runScene(new WelcomeScene());
 			} else {
 				cc.director.runScene(new InfoScene());
 			}
 		}.bind(this), 3000);
-	}
+	}*/
 });

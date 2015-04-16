@@ -34,9 +34,9 @@ var PlayLayer = cc.Layer.extend(/** @lends PlayLayer# */{
 		var goldGenerator = new ObjectShapedGenerator(this);
 		this.platformGenerator = new PlatformGenerator(this, true);
 		this.invGenerators = [
-		                      goldGenerator,
+		                     goldGenerator
 		                      // double jump shoe
-		                      new ObjectRandomGenerator(this),
+			/*  new ObjectRandomGenerator(this),
 		                      // speed up shoe
 		                      new ObjectRandomGenerator(this, function () {
 		                    	  var shoe = new SpeedUpShoe(-100, -100);
@@ -53,12 +53,25 @@ var PlayLayer = cc.Layer.extend(/** @lends PlayLayer# */{
 		                    		  cloth.sprite.setPosition(cc.p(x, y));
 		                    		  return cloth;
 		                    	  };
-		                      }(), {height: 170, gap: 800}),
+		                      }(), {height: 170, gap: 800}),*/
 		                      ];
 
 		// the player is the center of the screen.
 		var player = this.player = new Hero(winSize.width / 2, winSize.height / 2);
 		this.addRole(player);
+
+		var keyboardListener = cc.EventListener.create({
+			event: cc.EventListener.KEYBOARD,
+			onKeyPressed:  function(keyCode, event){
+				if(keyCode == cc.KEY.backspace || keyCode == cc.KEY.back){
+					event.getCurrentTarget().moveToNextScene();
+				}else if(keyCode == cc.KEY.home){
+					//do something
+				}
+			}
+		});
+
+		cc.eventManager.addListener(keyboardListener, this);
 
 		// Event handling.
 		var guestureRecognizer = new SimpleTouchRecognizer();
