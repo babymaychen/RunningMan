@@ -220,10 +220,10 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 
 		var playLayer = this.playLayer = new PlayLayer(camera, space, statistics, settings);
 		this.addChild(playLayer);
-		
+
 		var hubLayer = this.hubLayer = new HubLayer(playLayer.player, statistics, settings, camera);
 		this.addChild(hubLayer);
-		
+
 		// Setup collision Handler
 		space.addCollisionHandler(
 				SpriteTag.player,
