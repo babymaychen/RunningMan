@@ -41,7 +41,7 @@ var DoubleJumpShoe = cc.Class.extend({
 		));
 		this.rotatingAction.retain();
 
-		this.sprite = new cc.PhysicsSprite(cc.spriteFrameCache.getSpriteFrame("#shoes_00.png"));
+		this.sprite = new cc.PhysicsSprite("#shoes_00.png");
 		this.sprite.setScale(0.4);
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.rotatingAction);

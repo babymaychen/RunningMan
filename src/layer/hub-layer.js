@@ -33,7 +33,6 @@ var HubLayer = cc.Layer.extend({
 			y: winSize.height - 41,
 			anchorX:0
 		});
-		this.progress.setScaleX(0.00001);
 		this.progress.setScaleY(0.9);
 		this.addChild(this.progress);
 		
@@ -76,110 +75,110 @@ var HubLayer = cc.Layer.extend({
 		this.addChild(soundBtn);
 
 		// prop set
-//		this.magnetProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui_magnetProp),
-//				new cc.Sprite(res.ui_magnetProp),
-//				function(){
-//					if(this.mNum > 0) {
-//						this.magnetEffect = new MagnetEffect();
-//						this.addChild(this.magnetEffect, 2);
-//						this.magnetEffect.getMagnet();
-//
-//						this.player.getMagnet();
-//						this.consumeMagnet();
-//						setTimeout(function(){
-//							this.player.loseMagnet();
-//							this.magnetEffect.loseMagnet();
-//						}.bind(this), 15000);
-//
-//						cc.audioEngine.playEffect(res.sound_magnet);
-//						
-//						this.mNum--;
-//						sys.localStorage.setItem("magnet", this.mNum);
-//						this.MagentNum.setString(this.mNum);
-//					}
-//				}, this));
-//		this.magnetProp.setPosition(cc.p(winSize.width/2+150, winSize.height/2+10));
-//		this.magnetProp.setScale(0.5);
-//		this.addChild(this.magnetProp);
-//		
-//		this.shoesProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui_shoesProp),
-//				new cc.Sprite(res.ui_shoesProp),
-//				function(){
-//					if(this.sNum > 0) {
-//						this.player.getShoesAndSpeedUp();
-//						this.sNum--;
-//						sys.localStorage.setItem("shoes", this.sNum);
-//						this.ShoesNum.setString(this.sNum);
-//						
-//						this.magnetEffect = new MagnetEffect();
-//						this.addChild(this.magnetEffect, 2);
-//						this.magnetEffect.getMagnet();
-//
-//						setTimeout(function(){
-//							this.player.loseMagnet();
-//							this.magnetEffect.loseMagnet();
-//						}.bind(this), 15000);
-//
-//						cc.audioEngine.playEffect(res.sound_speedup);
-//					}
-//					
-//				}, this));
-//		this.shoesProp.attr({
-//			x: winSize.width/2+150,
-//			y: winSize.height/2-50
-//		});
-//		this.shoesProp.setScale(0.5);
-//		this.addChild(this.shoesProp);
-//		
-//		this.redshoesProp = new cc.Menu(new cc.MenuItemSprite(
-//				new cc.Sprite(res.ui_redshoesProp),
-//				new cc.Sprite(res.ui_redshoesProp),
-//				function(){
-//					
-//					if(this.rNum > 0) {
-//						this.player.getRedshoesAndSlowDown();
-//						this.rNum--;
-//						sys.localStorage.setItem("redshoes", this.rNum);
-//						this.RedshoesNum.setString(this.rNum);
-//						
-//						this.magnetEffect = new MagnetEffect();
-//						this.addChild(this.magnetEffect, 2);
-//						this.magnetEffect.getMagnet();
-//
-//						setTimeout(function(){
-//							this.player.loseMagnet();
-//							this.magnetEffect.loseMagnet();
-//						}.bind(this), 15000);
-//
-//						cc.audioEngine.playEffect(res.sound_magnet);
-//					}
-//					
-//				}, this));
-//		this.redshoesProp.setPosition(cc.p(winSize.width/2+150, winSize.height/2-110));
-//		this.redshoesProp.setScale(0.5);
-//		this.addChild(this.redshoesProp);
-//		
-//		// nums of prop
-//		this.mNum = sys.localStorage.getItem("magnet");
-//		this.sNum = sys.localStorage.getItem("shoes");
-//		this.rNum = sys.localStorage.getItem("redshoes");
-//		
-//		this.MagentNum = new cc.LabelTTF(this.mNum, "Helvetica", 14);
-//		this.MagentNum.setColor(cc.color(168, 117, 56));// white color
-//		this.MagentNum.setPosition(cc.p(winSize.width-68, winSize.height/2+148));
-//		this.addChild(this.MagentNum, 10);
-//		
-//		this.ShoesNum = new cc.LabelTTF(this.sNum, "Helvetica", 14);
-//		this.ShoesNum.setColor(cc.color(168, 117, 56));// white color
-//		this.ShoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+88));
-//		this.addChild(this.ShoesNum, 10);
-//		
-//		this.RedshoesNum = new cc.LabelTTF(this.rNum, "Helvetica", 14);
-//		this.RedshoesNum.setColor(cc.color(168, 117, 56));// white color
-//		this.RedshoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+28));
-//		this.addChild(this.RedshoesNum, 10);
+		this.magnetProp = new cc.Menu(new cc.MenuItemSprite(
+				new cc.Sprite(res.ui_magnetProp),
+				new cc.Sprite(res.ui_magnetProp),
+				function(){
+					if(this.mNum > 0) {
+						this.magnetEffect = new MagnetEffect();
+						this.addChild(this.magnetEffect, 2);
+						this.magnetEffect.getMagnet();
+
+						this.player.getMagnet();
+						this.consumeMagnet();
+						setTimeout(function(){
+							this.player.loseMagnet();
+							this.magnetEffect.loseMagnet();
+						}.bind(this), 15000);
+
+						cc.audioEngine.playEffect(res.sound_magnet);
+
+						this.mNum--;
+						cc.sys.localStorage.setItem("magnet", this.mNum);
+						this.MagentNum.setString(this.mNum);
+					}
+				}, this));
+		this.magnetProp.setPosition(cc.p(winSize.width/2+150, winSize.height/2+10));
+		this.magnetProp.setScale(0.5);
+		this.addChild(this.magnetProp);
+
+		this.shoesProp = new cc.Menu(new cc.MenuItemSprite(
+				new cc.Sprite(res.ui_shoesProp),
+				new cc.Sprite(res.ui_shoesProp),
+				function(){
+					if(this.sNum > 0) {
+						this.player.getShoesAndSpeedUp();
+						this.sNum--;
+						cc.sys.localStorage.setItem("shoes", this.sNum);
+						this.ShoesNum.setString(this.sNum);
+
+						this.magnetEffect = new MagnetEffect();
+						this.addChild(this.magnetEffect, 2);
+						this.magnetEffect.getMagnet();
+
+						setTimeout(function(){
+							this.player.loseMagnet();
+							this.magnetEffect.loseMagnet();
+						}.bind(this), 15000);
+
+						cc.audioEngine.playEffect(res.sound_speedup);
+					}
+
+				}, this));
+		this.shoesProp.attr({
+			x: winSize.width/2+150,
+			y: winSize.height/2-50
+		});
+		this.shoesProp.setScale(0.5);
+		this.addChild(this.shoesProp);
+
+		this.redshoesProp = new cc.Menu(new cc.MenuItemSprite(
+				new cc.Sprite(res.ui_redshoesProp),
+				new cc.Sprite(res.ui_redshoesProp),
+				function(){
+
+					if(this.rNum > 0) {
+						this.player.getRedshoesAndSlowDown();
+						this.rNum--;
+						cc.sys.localStorage.setItem("redshoes", this.rNum);
+						this.RedshoesNum.setString(this.rNum);
+
+						this.magnetEffect = new MagnetEffect();
+						this.addChild(this.magnetEffect, 2);
+						this.magnetEffect.getMagnet();
+
+						setTimeout(function(){
+							this.player.loseMagnet();
+							this.magnetEffect.loseMagnet();
+						}.bind(this), 15000);
+
+						cc.audioEngine.playEffect(res.sound_magnet);
+					}
+
+				}, this));
+		this.redshoesProp.setPosition(cc.p(winSize.width/2+150, winSize.height/2-110));
+		this.redshoesProp.setScale(0.5);
+		this.addChild(this.redshoesProp);
+
+		// nums of prop
+		this.mNum = cc.sys.localStorage.getItem("magnet");
+		this.sNum = cc.sys.localStorage.getItem("shoes");
+		this.rNum = cc.sys.localStorage.getItem("redshoes");
+
+		this.MagentNum = new cc.LabelTTF(this.mNum, "Helvetica", 14);
+		this.MagentNum.setColor(cc.color(168, 117, 56));// white color
+		this.MagentNum.setPosition(cc.p(winSize.width-68, winSize.height/2+148));
+		this.addChild(this.MagentNum, 10);
+
+		this.ShoesNum = new cc.LabelTTF(this.sNum, "Helvetica", 14);
+		this.ShoesNum.setColor(cc.color(168, 117, 56));// white color
+		this.ShoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+88));
+		this.addChild(this.ShoesNum, 10);
+
+		this.RedshoesNum = new cc.LabelTTF(this.rNum, "Helvetica", 14);
+		this.RedshoesNum.setColor(cc.color(168, 117, 56));// white color
+		this.RedshoesNum.setPosition(cc.p(winSize.width-68, winSize.height/2+28));
+		this.addChild(this.RedshoesNum, 10);
 				
 		this.scheduleUpdate();
 	},
@@ -192,6 +191,7 @@ var HubLayer = cc.Layer.extend({
 		// update the coins and meters.
 		this.labelCoin.setString(statistics.coins);
 		this.labelrun.setString(statistics.meter + " m");
+		this.progress.setScaleX(statistics.energy/100);
 		
 		// update the indicators.
 		for (var i=0; i<indicators.length; i++) {

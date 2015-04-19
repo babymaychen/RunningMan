@@ -39,6 +39,7 @@ var Bird = cc.Class.extend({
 		body.setPos(cc.p(posX, posY));
 		this.body = body;
 		this.sprite.setBody(body);
+		body.spriteObj = this;
 
 		var shape = new cp.BoxShape(body, contentSize.width - 14, contentSize.height-18);
 		this.shape = shape;

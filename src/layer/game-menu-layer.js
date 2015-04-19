@@ -45,7 +45,7 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 				new cc.Sprite(res.ui_backBtn), // normal state image
 				new cc.Sprite(res.ui_backBtn), // select state image
 				function(){
-					cc.director.end();
+					cc.director.runScene(new InfoScene());
 				}, this));
 		this.exitBtn.setPosition(cc.p(-10, 0));
 		this.exitBtn.setScale(0.8);
@@ -135,14 +135,14 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 				}), 0.08)
 		));
 		this.runningAction.retain();
-		this.sprite = cc.Sprite.create(cc.spriteFrameCache.getSpriteFrame("#panda_run_01.png"));
+		this.sprite = cc.Sprite.create("#panda_run_01.png");
 		this.sprite.setPosition(cc.p(-100,30));
 		this.spriteSheet.setPosition(cc.p(-100,30));
 		this.spriteSheet.addChild(this.sprite);
 		this.addChild(this.spriteSheet,0);
 		this.sprite.runAction(this.runningAction);
 
-		var moveTo = cc.MoveTo.create(10, cc.p(winsize.width+200, 30));
+		var moveTo = cc.MoveTo.create(10, cc.p(winsize.width+100, 30));
 		var seq = cc.Sequence.create(moveTo, cc.CallFunc.create(function(panda){
 			panda.setPositionX(-100);
 		},this.sprite));

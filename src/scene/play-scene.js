@@ -116,9 +116,16 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 	_initStatistics: function () {
 		var self = this;
 		var coins = 0;
+		var energys = 100;
 		return {
 			set coins(c) {
 				coins = c;
+			},
+			set energy(e) {
+				energys = e;
+			},
+			get energy() {
+				return energys;
 			},
 			get coins() {
 				return coins;
@@ -244,7 +251,22 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 					state.gameover = true;
 					self.addChild(new StatisticsLayer(statistics));
 				}, null, null, null);
-		
+
+		space.addCollisionHandler(
+				SpriteTag.player,
+				SpriteTag.frog,
+				function (arbiter, space) {
+					var shapes = arbiter.getShapes();
+					statistics.energy -= 10;
+					var bird = shapes[1].body.spriteObj;
+					bird.removeFromLayer();
+					bird.available = false;
+					if(statistics.energy == 0) {
+						state.gameover = true;
+						self.addChild(new StatisticsLayer(statistics));
+					}
+				}, null, null, null);
+
 		space.addCollisionHandler(
 				SpriteTag.player,
 				SpriteTag.inventory,
@@ -257,6 +279,16 @@ var PlayScene = cc.Scene.extend(/** @lends PlayScene# */{
 
 		// schedule the updates.
 		this.scheduleUpdate();
+
+		cc.eventManager.addListener({
+			event: cc.EventListener.KEYBOARD,
+			swallowTouches: true,
+			onKeyReleased: function (keyCode, event) {
+				if (keyCode == cc.KEY.back) {
+					cc.director.end();
+				}
+			}.bind(this)
+		}, this);
 	},
 	
 	addInventoryIndicator: function (ind) {

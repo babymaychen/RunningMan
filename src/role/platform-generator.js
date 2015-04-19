@@ -36,8 +36,8 @@ var PlatformGenerator = cc.Class.extend({
 	},
 	
 	generate: function (x, y) {
-		var gap = parseInt(Math.random()*200+100); //100~200
-		var height = parseInt(Math.random()*150+100) //100~300
+		var gap = parseInt(Math.random()*100+50); //50~100
+		var height = parseInt(Math.random()*150+100);//100~300
 		var block = parseInt(Math.random()*4);
 
 		var platform = this.platformGeneratorFunc(x + gap, height, block);

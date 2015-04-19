@@ -84,4 +84,4 @@ var Platform = cc.Class.extend({
 	getY: function() {
 		return this.platform.getPositionY();
 	}
-}) 
+});

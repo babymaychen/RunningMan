@@ -47,7 +47,7 @@ var SpeedUpShoe = cc.Class.extend({
 		));
 		this.rotatingAction.retain();
 
-		this.sprite = new cc.PhysicsSprite(cc.spriteFrameCache.getSpriteFrame("#redshoes_00.png"));
+		this.sprite = new cc.PhysicsSprite("#redshoes_00.png");
 		this.sprite.setScale(0.4);
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.rotatingAction);

@@ -18,17 +18,17 @@ var Frog = cc.Class.extend({
 	 * Construct a new player.
 	 */
 	ctor: function (posX, posY) {
-		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
-		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
+		cc.spriteFrameCache.addSpriteFrames(res.enemy_plist);
+		this.spriteSheet = new cc.SpriteBatchNode(res.enemy_png);
 
 		this.frogAction = new cc.RepeatForever(new cc.Animate(
-				new cc.Animation([1, 2, 3, 4, 5, 6].map(function (i) {
-					return cc.spriteFrameCache.getSpriteFrame("panda_run_0" + i + ".png");
+				new cc.Animation([1, 2].map(function (i) {
+					return cc.spriteFrameCache.getSpriteFrame("enemy_crab_faint_" + i + ".png");
 				}), 0.15)
 		));
 		this.frogAction.retain();
 
-		this.sprite = new cc.PhysicsSprite("#panda_run_01.png");
+		this.sprite = new cc.PhysicsSprite("#enemy_crab_faint_1.png");
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.frogAction);
 		this.sprite.retain();
@@ -44,6 +44,7 @@ var Frog = cc.Class.extend({
 		body.applyForce(cp.v(0, 150), cp.v(0, 0));
 		body.setPos(cc.p(posX, posY));
 		this.body = body;
+		body.spriteObj = this;
 		this.sprite.setBody(body);
 
 		var shape = new cp.BoxShape(body, contentSize.width - 14, contentSize.height-28);

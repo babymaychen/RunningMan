@@ -58,6 +58,10 @@ var res = {
 		bird_png: 'res/bird.png',
 		bird_plist: 'res/bird.plist',
 
+	// enemy
+		enemy_png: 'res/enemy.png',
+		enemy_plist: 'res/enemy.plist',
+
 	//magnet
 		magnet_png: 'res/magnet.png',
 		magnet_plist: 'res/magnet.plist',
@@ -143,7 +147,8 @@ var SpriteTag = {
 	spring: 6,
 	shoes: 7,
 	redshoes: 8,
-	bird: 9
+	bird: 9,
+	frog: 10
 };
 
 //game global variable

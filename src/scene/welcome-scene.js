@@ -19,5 +19,16 @@ var WelcomeScene = cc.Scene.extend(/** @lends WelcomeScene# */{
 		this.init();
 		var layer = new GameMenuLayer();
 		this.addChild(layer, 1);
+
+		cc.eventManager.addListener({
+			event: cc.EventListener.KEYBOARD,
+			swallowTouches: true,
+			onKeyReleased: function (keyCode, event) {
+				if (keyCode == cc.KEY.back) {
+					cc.director.end();
+				}
+			}.bind(this)
+		}, this);
 	}
+
 });

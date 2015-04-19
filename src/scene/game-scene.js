@@ -88,11 +88,11 @@ var GameScene = cc.Scene.extend({
 		this.rshoesEffect.getMagnet();
 
 		this.gameLayer.player.getRedshoesAndSlowDown();
-		//this.hubLayer.consumeMagnet();
-//		setTimeout(function(){
-//			//this.gameLayer.player.loseMagnet();
-//			//this.magnetEffect.loseMagnet();
-//		}.bind(this), 3000);
+		this.hubLayer.consumeMagnet();
+		setTimeout(function(){
+			//this.gameLayer.player.loseMagnet();
+			//this.magnetEffect.loseMagnet();
+		}.bind(this), 3000);
 
 		cc.audioEngine.playEffect(res.sound_magnet);
 	},
@@ -253,13 +253,13 @@ var GameScene = cc.Scene.extend({
 			}
 
 			//delete useless gold
-			//this.gameLayer.goldGenerator.update(dt);
-//			this.gameLayer.frogGenerator.update(dt);
-//			this.gameLayer.birdGenerator.update(dt);
-//			this.gameLayer.magnetGenerator.update(dt);
-//			this.gameLayer.springGenerator.update(dt);
-//			this.gameLayer.shoesGenerator.update(dt);
-//			this.gameLayer.redshoesGenerator.update(dt);
+			this.gameLayer.goldGenerator.update(dt);
+			this.gameLayer.frogGenerator.update(dt);
+			this.gameLayer.birdGenerator.update(dt);
+			this.gameLayer.magnetGenerator.update(dt);
+			this.gameLayer.springGenerator.update(dt);
+			this.gameLayer.shoesGenerator.update(dt);
+			this.gameLayer.redshoesGenerator.update(dt);
 			
 			//update running meter
 			statistics.meter = parseInt(this.gameLayer.player.sprite.getPositionX() / 50);

@@ -19,10 +19,10 @@ var SpringGenerator =  cc.Class.extend({
 			this.py = platform.getY()+53;
 			if(platform.length>=1){
 				// add frog
-//				var spring = new Spring(this.px, this.py, 0.7);
-//				this.layer.addRole(spring);
-//				this.springArr.push(spring);
-//				this.layer.objects.push(spring);
+				var spring = new Spring(this.px, this.py, 0.7);
+				this.layer.addRole(spring);
+				this.springArr.push(spring);
+				this.layer.objects.push(spring);
 				
 				if(this.layer.player.sprite.getPositionX() - this.spring.getX() > 250) {
 						this.spring.body.setPos(cc.p(this.px, this.py));

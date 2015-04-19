@@ -40,13 +40,13 @@ var MagnetCloth = cc.Class.extend({
 		this.spriteSheet = new cc.SpriteBatchNode(res.magnet_png);
 
 		this.rotatingAction = new cc.RepeatForever(new cc.Animate(
-				new cc.Animation([0, 1, 2, 3, 4].map(function (i) {
+				new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
 					return cc.spriteFrameCache.getSpriteFrame("magnet_0" + i + ".png");
 				}), 0.15)
 		));
 		this.rotatingAction.retain();
 
-		this.sprite = new cc.PhysicsSprite(cc.spriteFrameCache.getSpriteFrame("#magnet_00.png"));
+		this.sprite = new cc.PhysicsSprite("#magnet_01.png");
 		this.sprite.setScale(0.4);
 		this.spriteSheet.addChild(this.sprite);
 		this.sprite.runAction(this.rotatingAction);

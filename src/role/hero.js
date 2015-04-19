@@ -40,7 +40,6 @@ var Hero = cc.Class.extend({
 		this.x = x;
 		this.y = y;
 
-		cc.spriteFrameCache.addSpriteFrames(res.panda_plist);
 		this.spriteSheet = new cc.SpriteBatchNode(res.panda_png);
 
 		this.runningAction = new cc.RepeatForever( new cc.Animate(new cc.Animation([1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
@@ -76,6 +75,9 @@ var Hero = cc.Class.extend({
 		body.spriteObj = this;
 		this.body = body;
 		this.sprite.setBody(body);
+		this.stars = cc.ParticleSystem.create(res.particle_stars);
+		this.stars.setPositionType(1);
+		this.stars.setPosition(cc.p(60, 100));
 
 		var shape = new cp.BoxShape(body, contentSize.width - 14, contentSize.height-10);
 		this.shape = shape;
@@ -103,11 +105,6 @@ var Hero = cc.Class.extend({
 		this.space = space;
 		space.addBody(this.body);
 		space.addShape(this.shape);
-
-		// jump effect init
-// this.stars = cc.ParticleSystem(res.particle_stars);
-// this.stars.setPosition(100, 100);
-// this.layer.addChild(this.stars,3);
 
 	},
 
@@ -150,7 +147,7 @@ var Hero = cc.Class.extend({
 				if (vel.y == 0) {
 					this.status = 'running';
 					this.sprite.stopAllActions();
-					//this.sprite.runAction(this.runningAction);
+					this.sprite.runAction(this.runningAction);
 				}
 			} else if (vel.y < 0.1) {
 				this.status = this.status.slice(0, 7) + 'down';
@@ -181,10 +178,12 @@ var Hero = cc.Class.extend({
 	
 	simpleJump: function() {
 		this.isJump = true;
+
 		if (this.status == 'running') {
-			this.body.applyImpulse(cp.v(0, 4000), cp.v(0, 0));
+			this.body.applyImpulse(cp.v(0, 3600), cp.v(0, 0));
 			this.status = 'jump-1-up';
 			this.sprite.stopAllActions();
+			this.sprite.addChild(this.stars);
 			this.sprite.runAction(this.jumpUpAction);
 		}
 	},
@@ -232,8 +231,8 @@ var Hero = cc.Class.extend({
 	},
 
 	getMagnet: function() {
-// this.magnet = new Magnet(0, 0, 0.2);
-// this.magnet.addToLayer(null, this.layer);
+		this.magnet = new Magnet(0, 0, 0.2);
+		this.magnet.addToLayer(null, this.layer);
 		this.gotMagnet = true;	
 	},
 
@@ -242,8 +241,8 @@ var Hero = cc.Class.extend({
 	},
 
 	moveMagnet: function() {
-		// this.magnet.sprite.setPosition(cc.p(this.layer.player.sprite.getPositionX()-20,
-		// this.layer.player.sprite.getPositionY()+50));
+		 this.magnet.sprite.setPosition(cc.p(this.layer.player.sprite.getPositionX()-20,
+		 this.layer.player.sprite.getPositionY()+50));
 	},
 
 	getSpring: function() {

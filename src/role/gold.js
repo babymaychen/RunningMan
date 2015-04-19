@@ -82,7 +82,7 @@ var Gold = cc.Class.extend({
 	removeFromLayer: function () {
 		var px = this.sprite.getPositionX();
 		var py = this.sprite.getPositionY();
-		var action = cc.MoveTo.create(0.8, cc.p(px-200,py+350)).easing(cc.easeBackIn());
+		var action = cc.MoveTo.create(0.8, cc.p(px-200,py+350)).easing(cc.easeExponentialInOut());
 		this.sprite.runAction(action);
 	},
 	

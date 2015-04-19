@@ -19,9 +19,11 @@ var SplashScene = cc.Scene.extend(/** @lends SplashScene# */{
 		open.bake();
 		this.addChild(open, 1, 1);
 		this.schedule(function(){
-			var dd = cc.sys.localStorage.getItem("username");
-			//cc.log(dd.length == 0);
-			cc.director.runScene(new InfoScene());
+			if(cc.sys.localStorage.getItem("username")){
+				cc.director.runScene(new WelcomeScene());
+			} else {
+				cc.director.runScene(new InfoScene());
+			}
 		}, 2);
 	}
 
