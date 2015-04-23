@@ -128,6 +128,9 @@ var res = {
 		ui_shoesProp: 'res/ui/shoes-prop.png',
 		ui_redshoesProp: 'res/ui/redshoes-prop.png',
 		ui_man: 'res/runner.png',
+		ui_animationJson: 'res/NewAnimation.ExportJson',
+		ui_animationPlist: 'res/NewAnimation0.plist',
+		ui_animationPng: 'res/NewAnimation0.png',
 
 		physics_groundHeight: -1000
 };

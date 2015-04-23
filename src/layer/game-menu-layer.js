@@ -30,6 +30,17 @@ var GameMenuLayer = cc.Layer.extend(/**@lends GameMenuLayer# */{
 		this.welcome.setPosition(cc.p(winsize.width-180, winsize.height-50));
 		this.welcome.setScale(0.3);
 		this.addChild(this.welcome, 10);
+
+		ccs.armatureDataManager.addArmatureFileInfo(res.ui_animationPng,res.ui_animationPlist,res.ui_animationJson);
+
+		this.armature = ccs.Armature.create("NewAnimation");
+		this.armature.getAnimation().play("stand");
+		this.armature.x = winsize.width * 0.8;
+		this.armature.y = winsize.height / 2;
+
+		this.armature.setScale(0.5);
+
+		this.addChild(this.armature, 4, 0);
 		
 
 		//init logo

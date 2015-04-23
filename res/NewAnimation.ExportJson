@@ -1,0 +1,388 @@
+{
+  "content_scale": 1.0,
+  "armature_data": [
+    {
+      "strVersion": "1.6.0.0",
+      "version": 1.6,
+      "name": "NewAnimation",
+      "bone_data": [
+        {
+          "name": "Layer96",
+          "parent": "",
+          "dI": 0,
+          "x": 36.0,
+          "y": -15.0,
+          "z": 1,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.0,
+          "kY": 0.0,
+          "arrow_x": 0.0,
+          "arrow_y": 0.0,
+          "effectbyskeleton": true,
+          "bl": 0,
+          "display_data": [
+            {
+              "name": "cat/bodyWithCloth.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -11.0,
+                  "y": -15.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer97",
+          "parent": "Layer96",
+          "dI": 0,
+          "x": -64.0,
+          "y": -35.0,
+          "z": 6,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 2.78860235,
+          "kY": -2.78860235,
+          "arrow_x": 40.496875762939453,
+          "arrow_y": 2.5033950805664062E-06,
+          "effectbyskeleton": true,
+          "bl": 40,
+          "display_data": [
+            {
+              "name": "cat/end.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 19.1125679,
+                  "y": -5.97576141,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 3.49458265,
+                  "kY": 2.78860259
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer92",
+          "parent": "Layer96",
+          "dI": 0,
+          "x": -5.0,
+          "y": 52.0,
+          "z": 3,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.46887791,
+          "kY": 1.46887791,
+          "arrow_x": 88.4590072631836,
+          "arrow_y": 2.1398067474365234E-05,
+          "effectbyskeleton": true,
+          "bl": 88,
+          "display_data": [
+            {
+              "name": "cat/handWithCloth.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 47.8526649,
+                  "y": 3.8888073,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.46887815,
+                  "kY": -1.46887815
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer95",
+          "parent": "Layer92",
+          "dI": 0,
+          "x": -24.678081512451172,
+          "y": -43.737766265869141,
+          "z": 5,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.646459639,
+          "kY": -0.646459639,
+          "arrow_x": 19.105007171630859,
+          "arrow_y": -1.1205673217773438E-05,
+          "effectbyskeleton": true,
+          "bl": 19,
+          "display_data": [
+            {
+              "name": "cat/rightHandWithCLoth.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 10.5208244,
+                  "y": -2.512432,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.8224185,
+                  "kY": -0.8224181
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer102",
+          "parent": "Layer92",
+          "dI": 0,
+          "x": -21.433650970458984,
+          "y": 62.141773223876953,
+          "z": 4,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.46887791,
+          "kY": -1.46887791,
+          "arrow_x": 0.0,
+          "arrow_y": 0.0,
+          "effectbyskeleton": true,
+          "bl": 0,
+          "display_data": [
+            {
+              "name": "cat/leftHandWithCloth.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 14.0,
+                  "y": -2.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "NewAnimation",
+      "mov_data": [
+        {
+          "name": "stand",
+          "dr": 11,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 0.333333343,
+          "mov_bone_data": [
+            {
+              "name": "Layer97",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.466460526,
+                  "kY": -0.466460526,
+                  "fi": 10,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                }
+              ]
+            },
+            {
+              "name": "Layer95",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                }
+              ]
+            },
+            {
+              "name": "Layer102",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                }
+              ]
+            },
+            {
+              "name": "Layer92",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.191640943,
+                  "kY": -0.191640943,
+                  "fi": 5,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.1585325,
+                  "kY": 0.1585325,
+                  "fi": 10,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                }
+              ]
+            },
+            {
+              "name": "Layer96",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 1,
+                  "bd_dst": 771
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "cat/leftHandWithCloth",
+      "width": 50.0,
+      "height": 43.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "cat/rightHandWithCLoth",
+      "width": 33.0,
+      "height": 32.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "cat/end",
+      "width": 69.0,
+      "height": 27.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "cat/handWithCloth",
+      "width": 196.0,
+      "height": 205.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "cat/bodyWithCloth",
+      "width": 97.0,
+      "height": 96.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    }
+  ],
+  "config_file_path": [
+    "NewAnimation0.plist"
+  ],
+  "config_png_path": [
+    "NewAnimation0.png"
+  ]
+}
